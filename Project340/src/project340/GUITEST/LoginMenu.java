@@ -1,5 +1,4 @@
 package project340.GUITEST;
-import project340.controllers.controllerMenuView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -158,7 +157,6 @@ public class LoginMenu extends javax.swing.JFrame {
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         // TODO add your handling code here:
 
-        controllerMenuView.scoob(txtPass.getText(),txtUser.getText());
         
         
         String pass = "Password";
