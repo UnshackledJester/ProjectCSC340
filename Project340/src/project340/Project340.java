@@ -9,8 +9,13 @@ package project340;
  *
  * @author Chronos
  */
+
 public class Project340 {
 
+     public static void scoob(){
+        
+    }
+   
     /**
      * @param args the command line arguments
      */
