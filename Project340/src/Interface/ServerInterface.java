@@ -11,10 +11,26 @@ import Models.Customer;
  */
 public class ServerInterface {
     public Customer searchAccount(String id, String name){
-        Customer ted;
-        ted = new Customer();
+        Customer[] customerArray = createCustomerArray();
+        Customer currentCustomer=findMatch(customerArray);
+        return currentCustomer;
+    }
+    
+    public Customer findMatch(Customer[] x){
+        if (x.length>1){
+            return null;
+        }
+        
+        else 
+        return null;
+                
+    }
+    
+    public Customer[] createCustomerArray(){
+        Customer[] x = new Customer[0];
         
         
-        return ted;
+        
+        return x;
     }
 }
