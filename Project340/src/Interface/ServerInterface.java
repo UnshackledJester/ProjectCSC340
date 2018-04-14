@@ -17,11 +17,7 @@ public class ServerInterface {
     }
     
     public Customer findMatch(Customer[] x){
-        if (x.length>1){
-            return null;
-        }
         
-        else 
         return null;
                 
     }
