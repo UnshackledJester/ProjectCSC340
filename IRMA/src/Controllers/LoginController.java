@@ -10,17 +10,14 @@ import static Interfaces.DatabaseInterface.testForManager;
 import static Interfaces.ServerInterface.testForAdmin;
 import Views.LoginView;
 import java.io.IOException;
-/**
- *
- * @author Chronos
- */
+
 public class LoginController {
 
     public LoginController() {
     }
 
     
-    
+    //Validation function that calls database interface.
     public static int validateInput(String pass, String user) throws IOException {
         boolean manager = testForManager(pass, user);
         boolean employee = testForEmployees(pass, user);
@@ -35,7 +32,7 @@ public class LoginController {
         } else {
             return 0;
         }
-    }
+    }//Make view for LoginView.
     public static void MakeLogin(){
     LoginView logv = new LoginView();
       logv.setVisible(true);

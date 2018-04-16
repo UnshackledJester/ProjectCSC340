@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import static Controllers.LoginController.MakeLogin;
@@ -14,17 +9,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Chronos
- */
 public class AdminView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminView
-     */
+//New AdminView Form
     public AdminView() {
         initComponents();
+        //Set initial visibility
         txtID.setVisible(false);
         txtFirstName.setVisible(false);
         txtLastName.setVisible(false);
@@ -244,16 +234,18 @@ public class AdminView extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         MakeLogin();
+        //If logout is clicked, close this out and remake login window
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        clearFields();
+        clearFields();//Clear error label
         lblError.setVisible(false);
 
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        //Make fields visible for use when selecting "Add new manager"
         txtID.setVisible(true);
         txtFirstName.setVisible(true);
         txtLastName.setVisible(true);
@@ -281,7 +273,7 @@ public class AdminView extends javax.swing.JFrame {
         }    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
-
+//Try/catch to modify an existing manager based on information within the text fields.
         try {
             modManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
                     txtUsername.getText(), txtPassword.getText());
@@ -294,7 +286,7 @@ public class AdminView extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
-            // TODO add your handling code here:
+            //Try catch to get an array with manager variables(Will be reworked for simplicity
             String[] array = findManagerID(txtID.getText());
             setFields(array);
 
@@ -304,39 +296,15 @@ public class AdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        //Set fields visible for searching for a Manager
         lblID.setVisible(true);
         lblUsername.setVisible(true);
         txtID.setVisible(true);
         txtUsername.setVisible(true);    }//GEN-LAST:event_btnFindActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    //default java stuff
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminView().setVisible(true);
@@ -345,13 +313,17 @@ public class AdminView extends javax.swing.JFrame {
     }
 
     public void setFields(String[] arrayin) {
+        /*Horribly coded section to fill in text fields
+        Spent an hour trouble shooting only to find out
+        recoding it without changing anything fixed it.
+        Java is buggy*/
         txtID.setText(arrayin[0]);
         txtFirstName.setText(arrayin[1]);
         txtLastName.setText(arrayin[2]);
         txtEmail.setText(arrayin[3]);
         txtUsername.setText(arrayin[4]);
         txtPassword.setText(arrayin[5]);
-
+        //Hide ID from access so that the universal(eventually) ID cannot be changed.
         txtID.setVisible(false);
         txtFirstName.setVisible(true);
         txtLastName.setVisible(true);
@@ -368,6 +340,7 @@ public class AdminView extends javax.swing.JFrame {
     }
 
     public void clearFields() {
+        //Hide text fields and labels
         txtID.setText(" ");
         txtFirstName.setText(" ");
         txtLastName.setText(" ");
