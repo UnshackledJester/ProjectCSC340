@@ -26,6 +26,7 @@ public class AdminController {
         adminV.setVisible(true);
 
     }
+
     //Method to add new managers for Admin
     public static void addManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException {
         //Get array of current managers, and add one more index
@@ -40,46 +41,51 @@ public class AdminController {
     public static Manager findManagerUser(String username) throws IOException {
         Manager[] array = getManagers();
         for (int i = 0; i < array.length; i++) {
-            if(array[i].getUsername().equals(username)){
+            if (array[i].getUsername().equals(username)) {
                 return array[i];
-                     }else{
+            } else {
                 return null;
             }
         }
         Manager pete = array[0];
         return pete;
     }
-    public static Manager findManagerID(String ID) throws IOException{
+
+    public static String[] findManagerID(String ID) throws IOException {
         String test = ID;
         System.out.println(test);
         String found;
+        Manager[] arrayM = getManagers();
+        for (int i = 0; i < arrayM.length; i++) {
+            found = arrayM[i].getID();
+            System.out.println(arrayM[i].getID());
+            if (test.equals(found)) {
+                String[] arrayFound = new String[6];
+
+                arrayFound[0]=arrayM[i].getID();
+                arrayFound[1]=arrayM[i].getFirstname();
+                arrayFound[2]=arrayM[i].getLastname();
+                arrayFound[3]=arrayM[i].getEmail();
+                arrayFound[4]=arrayM[i].getUsername();
+                arrayFound[5]=arrayM[i].getPassword();
+            
+                return arrayFound;
+            }
+        }
+        return null;
+
+    }
+
+    public static void modManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException {
+        Manager modManager = new Manager(id, firstName, lastName, email, username, password);
         Manager[] array = getManagers();
         for (int i = 0; i < array.length; i++) {
-            found = array[i].getID();
-            System.out.println(array[i].getID());
-            if(test.equals(found) ){
-                System.out.println(array[i].getID());
-                Manager manager = new Manager(array[i].getID(),array[i].getFirstname(),array[i].getLastname(),array[i].getEmail(),array[i].getUsername(),array[i].getPassword());
-                System.out.println(manager.toString());
-                return manager;
-            }
-            
-            
-        }
-        System.out.println("pooop2");
-        return null;
-        
-    }
-    public static void modManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException{
-        Manager modManager = new Manager( id, firstName, lastName, email, username, password);
-        Manager[] array = getManagers();
-        for(int i =0; i<array.length;i++){
-            if(array[i].getID().equals(modManager.getID())){
-                array[i]=modManager;
+            if (array[i].getID().equals(modManager.getID())) {
+                array[i] = modManager;
             }
         }
         writeFileManagers(array);
-        
+
     }
 
 }

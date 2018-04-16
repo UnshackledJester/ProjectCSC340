@@ -27,12 +27,12 @@ public class DatabaseInterface {
         try (Scanner inFile = new Scanner(new File(file))) {
             int i = 0;
             while (inFile.hasNextLine()) {
-                String id = inFile.nextLine();
-                String firstName = inFile.nextLine();
-                String lastName = inFile.nextLine();
-                String email = inFile.nextLine();
-                String username = inFile.nextLine();
-                String password = inFile.nextLine();
+                String id = inFile.nextLine().trim();
+                String firstName = inFile.nextLine().trim();
+                String lastName = inFile.nextLine().trim();
+                String email = inFile.nextLine().trim();
+                String username = inFile.nextLine().trim();
+                String password = inFile.nextLine().trim();
                 Manager manager = new Manager(id, firstName, lastName, email, username, password);
                 managerArray[i] = manager;
                 i++;
@@ -59,12 +59,12 @@ public class DatabaseInterface {
         try (Scanner inFile = new Scanner(new File(file))) {
             int i = 0;
             while (inFile.hasNextLine()) {
-                String id = inFile.nextLine();
-                String firstName = inFile.nextLine();
-                String lastName = inFile.nextLine();
-                String email = inFile.nextLine();
-                String username = inFile.nextLine();
-                String password = inFile.nextLine();
+                String id = inFile.nextLine().trim();
+                String firstName = inFile.nextLine().trim();
+                String lastName = inFile.nextLine().trim();
+                String email = inFile.nextLine().trim();
+                String username = inFile.nextLine().trim();
+                String password = inFile.nextLine().trim();
                 Employee employee;
                 employee = new Manager(id, firstName, lastName, email, username, password);
                 employeeArray[i] = employee;
@@ -83,12 +83,12 @@ public class DatabaseInterface {
         try (PrintWriter outFile = new PrintWriter(file)) {
             for (int i = 0; i < employeeArray.length; i++) {
 
-                outFile.println(employeeArray[i].getID());
-                outFile.println(employeeArray[i].getFirstname());
-                outFile.println(employeeArray[i].getLastname());
-                outFile.println(employeeArray[i].getEmail());
-                outFile.println(employeeArray[i].getUsername());
-                outFile.println(employeeArray[i].getPassword());
+                outFile.println(employeeArray[i].getID().trim());
+                outFile.println(employeeArray[i].getFirstname().trim());
+                outFile.println(employeeArray[i].getLastname().trim());
+                outFile.println(employeeArray[i].getEmail().trim());
+                outFile.println(employeeArray[i].getUsername().trim());
+                outFile.println(employeeArray[i].getPassword().trim());
             }
             outFile.close();
         }
@@ -100,12 +100,12 @@ public class DatabaseInterface {
         Manager[] managerArray = eArray;
         try (PrintWriter outFile = new PrintWriter(file)) {
             for (int i = 0; i < managerArray.length; i++) {
-                outFile.println(managerArray[i].getID());
-                outFile.println(managerArray[i].getFirstname());
-                outFile.println(managerArray[i].getLastname());
-                outFile.println(managerArray[i].getEmail());
-                outFile.println(managerArray[i].getUsername());
-                outFile.println(managerArray[i].getPassword());
+                outFile.println(managerArray[i].getID().trim());
+                outFile.println(managerArray[i].getFirstname().trim());
+                outFile.println(managerArray[i].getLastname().trim());
+                outFile.println(managerArray[i].getEmail().trim());
+                outFile.println(managerArray[i].getUsername().trim());
+                outFile.println(managerArray[i].getPassword().trim());
             }
             outFile.close();
         }
