@@ -38,17 +38,29 @@ public class AdminController {
         writeFileManagers(newArray);
     }
 
-    public static Manager findManagerUser(String username) throws IOException {
-        Manager[] array = getManagers();
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getUsername().equals(username)) {
-                return array[i];
-            } else {
-                return null;
+    public static String[] findManagerUser(String username) throws IOException {
+         String test = username;
+        System.out.println(test);
+        String found;
+        Manager[] arrayM = getManagers();
+        for (int i = 0; i < arrayM.length; i++) {
+            found = arrayM[i].getUsername();
+            System.out.println(arrayM[i].getUsername());
+            if (test.equals(found)) {
+                String[] arrayFound = new String[6];
+
+                arrayFound[0]=arrayM[i].getID();
+                arrayFound[1]=arrayM[i].getFirstname();
+                arrayFound[2]=arrayM[i].getLastname();
+                arrayFound[3]=arrayM[i].getEmail();
+                arrayFound[4]=arrayM[i].getUsername();
+                arrayFound[5]=arrayM[i].getPassword();
+            
+                return arrayFound;
             }
         }
-        Manager pete = array[0];
-        return pete;
+        return null;
+
     }
 
     public static String[] findManagerID(String ID) throws IOException {

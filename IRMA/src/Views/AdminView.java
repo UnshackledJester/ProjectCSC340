@@ -10,7 +10,6 @@ import static Controllers.AdminController.addManager;
 import static Controllers.AdminController.findManagerID;
 import static Controllers.AdminController.findManagerUser;
 import static Controllers.AdminController.modManager;
-import Models.Manager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,13 +51,11 @@ public class AdminView extends javax.swing.JFrame {
     private void initComponents() {
 
         btnAdd = new javax.swing.JButton();
-        btnFind = new javax.swing.JButton();
         btnMod = new javax.swing.JButton();
         txtID = new javax.swing.JTextField();
         txtFirstName = new javax.swing.JTextField();
         txtLastName = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         lblID = new javax.swing.JLabel();
         lblFirst = new javax.swing.JLabel();
@@ -69,8 +66,10 @@ public class AdminView extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
+        btnSearch = new javax.swing.JButton();
+        btnFind = new javax.swing.JButton();
+        txtUsername = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,13 +77,6 @@ public class AdminView extends javax.swing.JFrame {
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
-            }
-        });
-
-        btnFind.setText("Find a Manager");
-        btnFind.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindActionPerformed(evt);
             }
         });
 
@@ -96,8 +88,6 @@ public class AdminView extends javax.swing.JFrame {
         });
 
         txtID.setMinimumSize(new java.awt.Dimension(117, 20));
-
-        txtUsername.setMinimumSize(new java.awt.Dimension(117, 20));
 
         lblID.setText("ID");
 
@@ -132,6 +122,8 @@ public class AdminView extends javax.swing.JFrame {
             }
         });
 
+        lblError.setText("Error: Manager not found.");
+
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +131,12 @@ public class AdminView extends javax.swing.JFrame {
             }
         });
 
-        lblError.setText("Error: Manager not found.");
+        btnFind.setText("Find a Manager");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,9 +149,9 @@ public class AdminView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSave)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
+                                .addGap(23, 23, 23)
                                 .addComponent(btnSearch)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,47 +162,50 @@ public class AdminView extends javax.swing.JFrame {
                                 .addComponent(lblPass, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addComponent(lblLast, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(btnClear, javax.swing.GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtUsername)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                                    .addComponent(txtFirstName)
+                                    .addComponent(txtLastName)
+                                    .addComponent(btnClear, javax.swing.GroupLayout.Alignment.CENTER))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnLogout)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnFind, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblError)))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtFirstName, txtLastName, txtPassword, txtUsername});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtFirstName, txtLastName, txtPassword});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFind)
-                    .addComponent(lblError))
+                    .addComponent(lblError)
+                    .addComponent(btnFind))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblID)
-                            .addComponent(btnSearch))
-                        .addGap(11, 11, 11)
+                            .addComponent(lblID))
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblFirst))
-                        .addGap(26, 26, 26)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLast))
@@ -213,7 +213,7 @@ public class AdminView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEmail))
-                        .addGap(15, 15, 15)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
@@ -224,13 +224,15 @@ public class AdminView extends javax.swing.JFrame {
                                 .addComponent(lblUsername)
                                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(5, 5, 5)
+                        .addComponent(btnSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnMod)
                         .addGap(58, 58, 58)
                         .addComponent(btnAdd)
                         .addGap(18, 18, 18)
                         .addComponent(btnSave)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
                     .addComponent(btnClear))
@@ -268,14 +270,6 @@ public class AdminView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        lblID.setVisible(true);
-        lblUsername.setVisible(true);
-        txtID.setVisible(true);
-        txtUsername.setVisible(true);
-
-    }//GEN-LAST:event_btnFindActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         try {
             //Add new manager to textfile
@@ -286,40 +280,34 @@ public class AdminView extends javax.swing.JFrame {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        if (txtID.getText() != null) {
-            try {
-                Manager manager;
-                manager =  findManagerID(txtID.getText());
-                /////////////////////////////////////////////////////////////////
-                setFields(manager);
-
-            } catch (IOException ex) {
-                Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } else {
-            try {
-                Manager manager = findManagerUser(txtUsername.getText().toString());
-                setFields(manager);
-
-            } catch (IOException ex) {
-                Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-    }//GEN-LAST:event_btnSearchActionPerformed
-
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
 
         try {
             modManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
                     txtUsername.getText(), txtPassword.getText());
+            clearFields();
         } catch (IOException ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnModActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        try {
+            // TODO add your handling code here:
+            String[] array = findManagerID(txtID.getText());
+            setFields(array);
+
+        } catch (IOException ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        lblID.setVisible(true);
+        lblUsername.setVisible(true);
+        txtID.setVisible(true);
+        txtUsername.setVisible(true);    }//GEN-LAST:event_btnFindActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,22 +344,27 @@ public class AdminView extends javax.swing.JFrame {
         });
     }
 
-    public void setFields(Manager modManager) {
-        Manager manager = modManager;
+    public void setFields(String[] arrayin) {
+        txtID.setText(arrayin[0]);
+        txtFirstName.setText(arrayin[1]);
+        txtLastName.setText(arrayin[2]);
+        txtEmail.setText(arrayin[3]);
+        txtUsername.setText(arrayin[4]);
+        txtPassword.setText(arrayin[5]);
 
-        txtID.setText(manager.getID());
         txtID.setVisible(false);
-        txtFirstName.setText(manager.getFirstname());
-        txtLastName.setText(manager.getLastname());
-        txtEmail.setText(manager.getEmail());
-        txtUsername.setText(manager.getUsername());
-        txtPassword.setText(manager.getPassword());
         txtFirstName.setVisible(true);
         txtLastName.setVisible(true);
         txtEmail.setVisible(true);
-        txtPassword.setVisible(true);
         txtUsername.setVisible(true);
+        txtPassword.setVisible(true);
 
+        lblID.setVisible(true);
+        lblFirst.setVisible(true);
+        lblLast.setVisible(true);
+        lblEmail.setVisible(true);
+        lblUsername.setVisible(true);
+        lblPass.setVisible(true);
     }
 
     public void clearFields() {
