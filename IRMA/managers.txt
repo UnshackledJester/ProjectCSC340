@@ -1,7 +1,7 @@
-Manager1 
-Joe 
-Rogan 
-rogan@bs.edu 
+Manager1
+Joe
+Rogan
+rogan@bs.edu
 Jomo
 Josespha
 manager2

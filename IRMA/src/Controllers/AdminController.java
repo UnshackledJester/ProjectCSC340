@@ -49,18 +49,26 @@ public class AdminController {
         Manager pete = array[0];
         return pete;
     }
-    public static Manager findManagerID(String id) throws IOException{
+    public static Manager findManagerID(String ID) throws IOException{
+        String test = ID;
+        System.out.println(test);
+        String found;
         Manager[] array = getManagers();
         for (int i = 0; i < array.length; i++) {
-            if(array[i].getID().equals(id)){
-                return array[i];
-            }else
-               return null;
+            found = array[i].getID();
+            System.out.println(array[i].getID());
+            if(test.equals(found) ){
+                System.out.println(array[i].getID());
+                Manager manager = new Manager(array[i].getID(),array[i].getFirstname(),array[i].getLastname(),array[i].getEmail(),array[i].getUsername(),array[i].getPassword());
+                System.out.println(manager.toString());
+                return manager;
+            }
             
-
+            
         }
-        Manager pete = array[0];
-        return pete;
+        System.out.println("pooop2");
+        return null;
+        
     }
     public static void modManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException{
         Manager modManager = new Manager( id, firstName, lastName, email, username, password);
