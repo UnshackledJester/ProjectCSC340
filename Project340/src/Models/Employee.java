@@ -1,59 +1,79 @@
 package Models;
 
-
-
-
-public class Employee 
-
-{
-
-
-
+public class Employee {
     //initialises variables
 
-    public String username;
-    public String password;
+    private String ID;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String password;
+    private String username;
 
-
-
-
-    public Employee(String username, String password) 
-    {
-        //sets constructors
-
+    //Constructor
+    public Employee(String id, String firstName, String lastName, String email, String username, String password) {
+        this.ID = id;
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.email = email;
         this.username = username;
         this.password = password;
-        
 
     }
 
-    //sets the getters and setters
-  
+    //Override to string for testing purposes
+    @Override
+    public String toString() {
+        return (this.getID() + "," + this.getFirstname() + "," + this.getLastname() + "," + this.getEmail() + "," + this.getUsername() + "," + this.getPassword()).toLowerCase();
+    }
 
-    public String getUsername()
-    {
-        return username;
+    //Getters and setters
+    public String getID() {
+        return ID;
     }
-    public void setUsername(String username)
-    {
-        this.username = username;
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
-    
-    public String getPassword()
-    {
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
         return password;
     }
-    public void setPassword (String password)
-    {
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-    //when printing employee list method it sets the input to display as below
-    public String toString() 
-    {
-        return "Username: " + this.username
-        + " / " + "password: " + this.password ;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }

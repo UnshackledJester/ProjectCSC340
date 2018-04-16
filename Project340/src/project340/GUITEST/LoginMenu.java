@@ -1,5 +1,8 @@
 package project340.GUITEST;
-
+import java.util.Scanner;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,9 +17,11 @@ public class LoginMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginMenu
+     * @throws java.io.FileNotFoundException
      */
-    public LoginMenu() {
+    public LoginMenu() throws FileNotFoundException {
         initComponents();
+        
         lblError.setVisible(false);
 
     }
@@ -197,8 +202,12 @@ public class LoginMenu extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws FileNotFoundException {
+        System.out.println("Test before read");
+        FileReader inputFile = new FileReader("C:\\Users\\Chronos\\Documents\\GitHub\\ProjectCSC340\\Project340\\src\\Textfiles");
+        System.out.println("Test");
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -226,7 +235,11 @@ public class LoginMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginMenu().setVisible(true);
+                try {
+                    new LoginMenu().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(LoginMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
         });

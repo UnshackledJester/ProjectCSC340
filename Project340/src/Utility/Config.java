@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Utility;
+//for use in configuring options.
 
-/**
- *
- * @author Chronos
- */
 public class Config {
-    
+
+    //Filler for use in design; to be worked on in the future
+    public static String getFileDatabase(String type) {
+        String fileType = type;
+        if (type.equals("Managers")) {
+            return "managers.txt";
+        } else {
+            return "employees.txt";
+        }
+
+    }
 }

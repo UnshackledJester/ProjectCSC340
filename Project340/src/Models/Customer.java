@@ -1,20 +1,19 @@
 package Models;
 
 public class Customer {
+    //Variables for Customers
+    private String ID;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String password;
+    private String username;
 
-    public String ID;
-    public String firstname;
-    public String lastname;
-    public String email;
-    public String password;
-    public String username;
-            
-
-    public Customer() {
-    }
-
+    //Stub for future use
+    Packages customerPackage = new Packages();
+    //Constructor
     public Customer(String id, String firstname, String lastname, String email, String username, String password) {
-        this.ID = ID;
+        this.ID = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -23,16 +22,7 @@ public class Customer {
         
     }
 
-    Customer(String data) {
-        String[] dataArr = data.split(",");
-        this.ID = dataArr[0];
-        this.firstname = dataArr[1];
-        this.lastname = dataArr[2];
-        this.email = dataArr[3];
-        this.password =dataArr[4];
-        this.username = dataArr[5];
-    }
-
+  //Getters and setters
     public void setUsername(String username) {
         this.username = username;
     }
@@ -77,7 +67,7 @@ public class Customer {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
+//To String override for testing purposes
     @Override
     public String toString() {
         return (this.ID + "," + this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password).toLowerCase();

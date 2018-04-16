@@ -1,5 +1,9 @@
 package project340.GUITEST;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -175,7 +179,11 @@ public class AdminView extends javax.swing.JFrame {
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
 
-        new LoginMenu().setVisible(true);
+        try {
+            new LoginMenu().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReturnActionPerformed
