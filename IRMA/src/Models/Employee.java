@@ -1,6 +1,8 @@
 package Models;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable  {
     //initialises variables
 
     private String ID;

@@ -5,9 +5,10 @@
  */
 package Controllers;
 
-import static Interfaces.DatabaseInterface.testForEmployees;
-import static Interfaces.DatabaseInterface.testForManager;
-import static Interfaces.ServerInterface.testForAdmin;
+
+import static Models.Authentication.testForAdmin;
+import static Models.Authentication.testForEmployees;
+import static Models.Authentication.testForManager;
 import Views.LoginView;
 import java.io.IOException;
 /**
@@ -19,9 +20,7 @@ public class LoginController {
     public LoginController() {
     }
 
-    
-    
-    public static int validateInput(String pass, String user) throws IOException {
+    public static int validateInput(String pass, String user) throws IOException, Exception {
         boolean manager = testForManager(pass, user);
         boolean employee = testForEmployees(pass, user);
         boolean admin = testForAdmin(pass, user);

@@ -5,8 +5,8 @@
  */
 package Controllers;
 
-import static Interfaces.DatabaseInterface.getManagers;
-import static Interfaces.DatabaseInterface.writeFileManagers;
+
+import static Interfaces.DatabaseInterface.getManager;
 import Models.Manager;
 import Views.AdminView;
 import java.io.IOException;
@@ -28,21 +28,21 @@ public class AdminController {
     }
 
     //Method to add new managers for Admin
-    public static void addManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException {
+    public static void addManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current managers, and add one more index
-        Manager[] oldArray = getManagers();
+        Manager[] oldArray = getManager();
         Manager[] newArray = new Manager[oldArray.length + 1];
         System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
         //add new manager to end of array and print to file
         newArray[oldArray.length] = new Manager(id, firstName, lastName, email, username, password);
-        writeFileManagers(newArray);
+// writeFileManagers(array);
     }
 
-    public static String[] findManagerUser(String username) throws IOException {
+    public static String[] findManagerUser(String username) throws IOException, Exception {
          String test = username;
         System.out.println(test);
         String found;
-        Manager[] arrayM = getManagers();
+        Manager[] arrayM = getManager();
         for (int i = 0; i < arrayM.length; i++) {
             found = arrayM[i].getUsername();
             System.out.println(arrayM[i].getUsername());
@@ -63,11 +63,11 @@ public class AdminController {
 
     }
 
-    public static String[] findManagerID(String ID) throws IOException {
+    public static String[] findManagerID(String ID) throws IOException, Exception {
         String test = ID;
         System.out.println(test);
         String found;
-        Manager[] arrayM = getManagers();
+        Manager[] arrayM = getManager();
         for (int i = 0; i < arrayM.length; i++) {
             found = arrayM[i].getID();
             System.out.println(arrayM[i].getID());
@@ -88,15 +88,15 @@ public class AdminController {
 
     }
 
-    public static void modManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException {
+    public static void modManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         Manager modManager = new Manager(id, firstName, lastName, email, username, password);
-        Manager[] array = getManagers();
+        Manager[] array = getManager();
         for (int i = 0; i < array.length; i++) {
             if (array[i].getID().equals(modManager.getID())) {
                 array[i] = modManager;
             }
         }
-        writeFileManagers(array);
+       // writeFileManagers(array);
 
     }
 

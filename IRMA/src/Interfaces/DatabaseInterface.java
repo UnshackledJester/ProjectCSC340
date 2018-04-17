@@ -11,37 +11,41 @@ import java.io.*;
 public class DatabaseInterface {
 
     //Method to get Manager array
-    public static Manager[] getManagers() throws FileNotFoundException, IOException {
-        //For use with a future interface
-        String file = Utility.Config.getFileDatabase("Managers");
-        //Sends for method to read file
-        Manager[] managerArray = readFileManagers(file);
+     public static Manager[] LoadManager()throws Exception //Reads the array of Customer back from file.
+    {
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
+        Manager[] managerArray = (Manager[]) oin.readObject();
+        oin.close();
         return managerArray;
     }
-
-    //Read text file, assign variables, create Manager objects from variables, and return array of Managers.
-    public static Manager[] readFileManagers(String fileLocation) throws FileNotFoundException, IOException {
-        String file = fileLocation;
-        int total = getTotal(file);
-        Manager[] managerArray = new Manager[total];
-        try (Scanner inFile = new Scanner(new File(file))) {
-            int i = 0;
-            while (inFile.hasNextLine()) {
-                String id = inFile.nextLine().trim();
-                String firstName = inFile.nextLine().trim();
-                String lastName = inFile.nextLine().trim();
-                String email = inFile.nextLine().trim();
-                String username = inFile.nextLine().trim();
-                String password = inFile.nextLine().trim();
-                Manager manager = new Manager(id, firstName, lastName, email, username, password);
-                managerArray[i] = manager;
-                i++;
-            }
-            inFile.close();
-        }
-        return managerArray;
+     public static void saveManager(Manager[] managerArray)throws Exception //writes the array of Customer to a file "Customer.ser"
+    {
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\User.txt"));
+        os.writeObject(managerArray);
+        os.close();
     }
-
+     public static Employee[] LoadEmployee()throws Exception //Reads the array of Customer back from file.
+    {
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
+        Employee[] employeeArray = (Employee[]) oin.readObject();
+        oin.close();
+        return employeeArray;
+    }
+     public static void saveEmployee(Employee[] employeeArray)throws Exception //writes the array of Customer to a file "Customer.ser"
+    {
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\User.txt"));
+        os.writeObject(employeeArray);
+        os.close();
+    }
+    public static Manager[] getManager() throws Exception{
+        Manager[] Manager = LoadManager();
+         return Manager;
+    }
+    public static Employee[] getEmployee() throws Exception{
+        Employee[] Employee = LoadEmployee();
+         return Employee;
+    }
+/*
     //Method to get Employee array
     public static Employee[] getEmployees() throws FileNotFoundException, IOException {
         //for use with a future interface
@@ -125,32 +129,8 @@ public class DatabaseInterface {
         }
         //Total lines divided by number of variables per object
         return total / 6;
-    }
-    //Test if manager Username and Password combination exists.
-     public static boolean testForManager(String pass, String user) throws IOException{
-        Manager[] array = getManagers();
-        for(int i =0; i<array.length; i++){
-             if (array[i].getUsername().equals(user)&& array[i].getPassword().equals(pass)){
-                 return true;
-             }
-        }
-        return false;
-    }
-     //Test if Employee Username and Password combination exists.
-     public static boolean testForEmployees(String pass, String user) throws IOException{
-         Employee[] array = getEmployees();
-         for(int i =0; i<array.length; i++){
-             if (array[i].getUsername().equals(user)&& array[i].getPassword().equals(pass)){
-                 return true;
-             }
-        }
-        
-        return false;
-     }
-     
-     
-        
-    
+    }  
+   */ 
 }
 
 

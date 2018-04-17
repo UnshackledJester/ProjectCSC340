@@ -1,7 +1,10 @@
 package Models;
 //Extension class for managers
 
-public class Manager extends Employee {
+import java.io.Serializable;
+
+
+public class Manager extends Employee implements Serializable  {
 
     //constructor
     public Manager(String id, String firstName, String lastName, String email, String username, String password) {

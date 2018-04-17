@@ -11,7 +11,5 @@ package Interfaces;
  */
 public class ServerInterface {
 
-    public static boolean testForAdmin(String pass, String user) {
-        return (user.equals("Admin") && pass.equals("Password"));
-    }
+    
 }
