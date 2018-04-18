@@ -58,7 +58,7 @@ public class DatabaseInterface {
       public static void main(String[] args) throws Exception
     {
         
-        ArrayList<Manager> arr= new  ArrayList<Manager>();
+       ArrayList<Manager> arr= new  ArrayList<Manager>();
        arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
        arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
        arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
