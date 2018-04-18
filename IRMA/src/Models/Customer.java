@@ -12,7 +12,6 @@ public class Customer implements Serializable  {
     private String username;
 
     //Stub for future use
-    Packages customerPackage = new Packages();
     //Constructor
     public Customer(String id, String firstname, String lastname, String email, String username, String password) {
         this.ID = id;

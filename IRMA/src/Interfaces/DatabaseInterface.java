@@ -1,30 +1,31 @@
 package Interfaces;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import Models.Manager;
 import Models.Employee;
-import java.util.Scanner;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 //Class to act as interface for simulated database(textfile used)
 public class DatabaseInterface {
 
     //Method to get Manager array
-     public static Manager[] LoadManager()throws Exception //Reads the array of Customer back from file.
+     public static ArrayList<Manager> loadManager()throws Exception //Reads the array of Customer back from file.
     {
         ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
-        Manager[] managerArray = (Manager[]) oin.readObject();
+        ArrayList<Manager> managerArray = (ArrayList<Manager>) oin.readObject();
         oin.close();
         return managerArray;
     }
-     public static void saveManager(Manager[] managerArray)throws Exception //writes the array of Customer to a file "Customer.ser"
+     public static void saveManager(ArrayList<Manager> managerArray)throws Exception //writes the array of Customer to a file "Customer.ser"
     {
         ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\User.txt"));
         os.writeObject(managerArray);
         os.close();
     }
-     public static Employee[] LoadEmployee()throws Exception //Reads the array of Customer back from file.
+     public static Employee[] loadEmployee()throws Exception //Reads the array of Customer back from file.
     {
         ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
         Employee[] employeeArray = (Employee[]) oin.readObject();
@@ -37,14 +38,43 @@ public class DatabaseInterface {
         os.writeObject(employeeArray);
         os.close();
     }
-    public static Manager[] getManager() throws Exception{
-        Manager[] Manager = LoadManager();
+    public static ArrayList<Manager> getManager() throws Exception{
+        ArrayList<Manager> Manager = loadManager();
+        for (Manager p : Manager)
+        {
+            System.out.println(p);
+        }
          return Manager;
     }
     public static Employee[] getEmployee() throws Exception{
-        Employee[] Employee = LoadEmployee();
+        Employee[] Employee = loadEmployee();
+        
+         for (Employee p : Employee)
+        {
+            System.out.println(p);
+        }
          return Employee;
     }
+      public static void main(String[] args) throws Exception
+    {
+        
+        ArrayList<Manager> arr= new  ArrayList<Manager>();
+       arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+       arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+       arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+
+        
+        System.out.println("Saving array to file");
+        saveManager(arr);
+        System.out.println("Reading array back from file");
+        ArrayList<Manager> Manager = loadManager();
+        for (Manager p : Manager)
+        {
+            System.out.println(p);
+        }
+       
+    }
+}
 /*
     //Method to get Employee array
     public static Employee[] getEmployees() throws FileNotFoundException, IOException {
@@ -131,6 +161,6 @@ public class DatabaseInterface {
         return total / 6;
     }  
    */ 
-}
+
 
 
