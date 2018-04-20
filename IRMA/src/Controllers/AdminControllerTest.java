@@ -7,6 +7,7 @@ package Controllers;
 
 
 import static Interfaces.DatabaseInterface.getManager;
+import static Interfaces.DatabaseInterface.saveManager;
 import Models.Manager;
 import Views.AdminView;
 import java.io.IOException;
@@ -31,12 +32,33 @@ public class AdminControllerTest {
     //Method to add new managers for Admin
     public static void addManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current managers, and add one more index
-        ArrayList<Manager> arr = getManager();      
+        ArrayList<Manager> arr = getManager();
+        String test = id;
+        System.out.println(test);
+           for(Manager manager : arr) {
+        if(manager.getID().equals(test)) {
+            System.out.println(" ID already exist"); 
+            }
+        else{
         arr.add(new Manager(id, firstName, lastName, email, username, password));
-        
-        
-// writeFileManagers(array);
+        }
+        saveManager(arr); // save
+
     }
+    }
+    public static Manager removeManagerUser(String ID) throws IOException, Exception {
+        ArrayList<Manager> arr = getManager();   
+        String test = ID;
+        System.out.println(test);
+           for(Manager manager : arr) {
+        if(manager.getID().equals(test)) {
+        arr.remove(manager);
+        }
+        saveManager(arr); 
+        
+    }
+    return null;
+}
 
     public static Manager findManagerUser(String username) throws IOException, Exception {
         ArrayList<Manager> arr = getManager();   
@@ -49,9 +71,6 @@ public class AdminControllerTest {
     }
     return null;
 }
-    
-
-
     
 
     public static Manager findManagerID(String ID) throws IOException, Exception {
@@ -75,7 +94,8 @@ public class AdminControllerTest {
             manager = modManager;
             }
         }
-       // writeFileManagers(array);
+        saveManager(arr);
+      
 
     }
 

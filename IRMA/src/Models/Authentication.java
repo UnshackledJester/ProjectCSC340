@@ -18,7 +18,10 @@ public class Authentication {
         return false;
     }
     //Test if Employee Username and Password combination exists.
-
+ public static boolean testForEmployee(String pass, String user) {
+        return (user.equals("Employee") && pass.equals("Password"));
+    }
+ 
 
     public static boolean testForAdmin(String pass, String user) {
         return (user.equals("Admin") && pass.equals("Password"));

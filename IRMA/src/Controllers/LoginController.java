@@ -7,7 +7,7 @@ package Controllers;
 
 
 import static Models.Authentication.testForAdmin;
-import static Models.Authentication.testForEmployees;
+import static Models.Authentication.testForEmployee;
 import static Models.Authentication.testForManager;
 import Views.LoginView;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class LoginController {
 
     public static int validateInput(String pass, String user) throws IOException, Exception {
         boolean manager = testForManager(pass, user);
-        boolean employee = testForEmployees(pass, user);
+        boolean employee = testForEmployee(pass, user);
         boolean admin = testForAdmin(pass, user);
 
         if (true == manager) {

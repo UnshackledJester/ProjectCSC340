@@ -6,10 +6,11 @@
 package Views;
 
 import static Controllers.LoginController.MakeLogin;
-import static Controllers.AdminController.addManager;
-import static Controllers.AdminController.findManagerID;
-import static Controllers.AdminController.findManagerUser;
+import static Controllers.AdminControllerTest.addManager;
+import static Controllers.AdminControllerTest.findManagerID;
+import static Controllers.AdminControllerTest.findManagerUser;
 import static Controllers.AdminController.modManager;
+import Models.Manager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -278,6 +279,8 @@ public class AdminView extends javax.swing.JFrame {
             clearFields();
         } catch (IOException ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
@@ -288,6 +291,8 @@ public class AdminView extends javax.swing.JFrame {
             clearFields();
         } catch (IOException ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnModActionPerformed
@@ -295,10 +300,12 @@ public class AdminView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
             // TODO add your handling code here:
-            String[] array = findManagerID(txtID.getText());
+            Manager array = findManagerID(txtID.getText());
             setFields(array);
 
         } catch (IOException ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -344,13 +351,13 @@ public class AdminView extends javax.swing.JFrame {
         });
     }
 
-    public void setFields(String[] arrayin) {
-        txtID.setText(arrayin[0]);
-        txtFirstName.setText(arrayin[1]);
-        txtLastName.setText(arrayin[2]);
-        txtEmail.setText(arrayin[3]);
-        txtUsername.setText(arrayin[4]);
-        txtPassword.setText(arrayin[5]);
+    public void setFields(Manager arrayin) {
+        txtID.setText(arrayin.getID());
+        txtFirstName.setText(arrayin.getFirstname());
+        txtLastName.setText(arrayin.getLastname());
+        txtEmail.setText(arrayin.getEmail());
+        txtUsername.setText(arrayin.getUsername());
+        txtPassword.setText(arrayin.getPassword());
 
         txtID.setVisible(false);
         txtFirstName.setVisible(true);

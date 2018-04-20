@@ -55,13 +55,13 @@ public class DatabaseInterface {
         }
          return Employee;
     }
-      public static void main(String[] args) throws Exception
+     /* public static void main(String[] args) throws Exception
     {
         
        ArrayList<Manager> arr= new  ArrayList<Manager>();
        arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
-       arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
-       arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+       arr.add(new Manager("456", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+       arr.add(new Manager("789", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
 
         
         System.out.println("Saving array to file");
@@ -73,7 +73,7 @@ public class DatabaseInterface {
             System.out.println(p);
         }
        
-    }
+    } */
 }
 /*
     //Method to get Employee array
