@@ -51,7 +51,6 @@ public class AdminController {
     }
     public static Manager findManagerID(String ID) throws IOException{
         String test = ID;
-        System.out.println(test);
         String found;
         Manager[] array = getManagers();
         for (int i = 0; i < array.length; i++) {
