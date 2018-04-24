@@ -18,13 +18,12 @@ import java.util.logging.Logger;
  *
  * @author Chronos
  */
+//Used for making JFrames
 public class LoginView extends javax.swing.JFrame {
-
-    /**
-     * Creates new form LoginView
-     */
+//Initializer
     public LoginView() {
         initComponents();
+        //Set error label to hidden and adding text
         lblError.setVisible(false);
         lblError.setText("Error: Incorrect Username and Password combination.");
     }
@@ -130,10 +129,11 @@ public class LoginView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Enter button try/catch
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         try {
             //Try catch to validate input;
+            //Passes input to interface and recieves integer based on boolean evaluation
             int valid = validateInput(txtPass.getText(), txtUser.getText());
             switch (valid) {
                 case 1:
@@ -149,7 +149,7 @@ public class LoginView extends javax.swing.JFrame {
                     MakeAdminGUI();
                     this.dispose();                    
                     break;
-                default:
+                default://Default setting is incorrct
                     txtUser.setVisible(false);
                     txtPass.setVisible(false);
                     lblError.setVisible(true); 
@@ -162,7 +162,6 @@ public class LoginView extends javax.swing.JFrame {
       
         
     }//GEN-LAST:event_btnEnterActionPerformed
-
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         //Exit if you click exit.
         System.exit(0);
@@ -181,9 +180,7 @@ public class LoginView extends javax.swing.JFrame {
         lblError.setVisible(false);       
     }//GEN-LAST:event_btnClearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    //Not sure, Java put this here automatically
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -212,6 +209,7 @@ public class LoginView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                //Initialize new view.
                 new LoginView().setVisible(true);
             }
         });

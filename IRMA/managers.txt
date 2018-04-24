@@ -1,10 +1,10 @@
 Manager1
-Joe
-Rogan
+Robert
+Philbert
 rogan@bs.edu
 Jomo
-Josespha
-manager2
+Radish
+Manager2
 jim
 bob
 joebob.edu
