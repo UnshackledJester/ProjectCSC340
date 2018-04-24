@@ -375,12 +375,12 @@ public class AdminView extends javax.swing.JFrame {
     }
 
     public void clearFields() {
-        txtID.setText(" ");
-        txtFirstName.setText(" ");
-        txtLastName.setText(" ");
-        txtEmail.setText(" ");
-        txtUsername.setText(" ");
-        txtPassword.setText(" ");
+        txtID.setText(null);
+        txtFirstName.setText(null);
+        txtLastName.setText(null);
+        txtEmail.setText(null);
+        txtUsername.setText(null);
+        txtPassword.setText(null);
 
         txtID.setVisible(false);
         txtFirstName.setVisible(false);
