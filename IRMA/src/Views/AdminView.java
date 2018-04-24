@@ -1,10 +1,6 @@
 package Views;
 
-import static Controllers.LoginController.MakeLogin;
-import static Controllers.AdminController.addManager;
-import static Controllers.AdminController.findManagerID;
-import static Controllers.AdminController.findManagerUser;
-import static Controllers.AdminController.modManager;
+import  Models.Manager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -233,7 +229,7 @@ public class AdminView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        MakeLogin();
+        Controllers.LoginController.MakeLogin();
         //If logout is clicked, close this out and remake login window
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -265,20 +261,25 @@ public class AdminView extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         try {
             //Add new manager to textfile
-            addManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
+            Controllers.AdminController.addManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
                     txtUsername.getText(), txtPassword.getText());
             clearFields();
         } catch (IOException ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
 //Try/catch to modify an existing manager based on information within the text fields.
         try {
-            modManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
+            Manager manager = new Manager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
                     txtUsername.getText(), txtPassword.getText());
+            Controllers.AdminController.modManager(manager, txtID.getText());
             clearFields();
         } catch (IOException ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -287,10 +288,12 @@ public class AdminView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
             //Try catch to get an array with manager variables(Will be reworked for simplicity
-            String[] array = findManagerID(txtID.getText());
+            Manager array = Controllers.AdminController.findManagerID(txtID.getText());
             setFields(array);
 
         } catch (IOException ex) {
+            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -312,17 +315,17 @@ public class AdminView extends javax.swing.JFrame {
         });
     }
 
-    public void setFields(String[] arrayin) {
+    public void setFields(Manager manager) {
         /*Horribly coded section to fill in text fields
         Spent an hour trouble shooting only to find out
         recoding it without changing anything fixed it.
         Java is buggy*/
-        txtID.setText(arrayin[0]);
-        txtFirstName.setText(arrayin[1]);
-        txtLastName.setText(arrayin[2]);
-        txtEmail.setText(arrayin[3]);
-        txtUsername.setText(arrayin[4]);
-        txtPassword.setText(arrayin[5]);
+        txtID.setText(manager.getID());
+        txtFirstName.setText(manager.getFirstname());
+        txtLastName.setText(manager.getLastname());
+        txtEmail.setText(manager.getEmail());
+        txtUsername.setText(manager.getUsername());
+        txtPassword.setText(manager.getPassword());
         //Hide ID from access so that the universal(eventually) ID cannot be changed.
         txtID.setVisible(false);
         txtFirstName.setVisible(true);
@@ -340,14 +343,14 @@ public class AdminView extends javax.swing.JFrame {
     }
 
     public void clearFields() {
-<<<<<<< HEAD
+
         txtID.setText(null);
         txtFirstName.setText(null);
         txtLastName.setText(null);
         txtEmail.setText(null);
         txtUsername.setText(null);
         txtPassword.setText(null);
-=======
+
         //Hide text fields and labels
         txtID.setText(" ");
         txtFirstName.setText(" ");
@@ -355,7 +358,6 @@ public class AdminView extends javax.swing.JFrame {
         txtEmail.setText(" ");
         txtUsername.setText(" ");
         txtPassword.setText(" ");
->>>>>>> 88d54c32cbcdf39bde690e210cbeb50941dea63e
 
         txtID.setVisible(false);
         txtFirstName.setVisible(false);

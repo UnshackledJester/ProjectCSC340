@@ -5,10 +5,10 @@
  */
 package Views;
 
-import static Controllers.AdminController.MakeAdminGUI;
-import static Controllers.EmployeeController.MakeEmployeeGUI;
-import static Controllers.LoginController.validateInput;
-import static Controllers.ManagerController.MakeManagerGUI;
+import  Controllers.AdminController;
+import  Controllers.EmployeeController;
+import  Controllers.LoginController;
+import  Controllers.ManagerController;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -134,19 +134,19 @@ public class LoginView extends javax.swing.JFrame {
         try {
             //Try catch to validate input;
             //Passes input to interface and recieves integer based on boolean evaluation
-            int valid = validateInput(txtPass.getText(), txtUser.getText());
+            int valid = Controllers.LoginController.validateInput(txtPass.getText(), txtUser.getText());
             switch (valid) {
                 case 1:
                     //Manager is true
-                    MakeManagerGUI();
+                    Controllers.ManagerController.MakeManagerGUI();
                     break;
                 case 2:
                     //Employee is true
-                    MakeEmployeeGUI();
+                    Controllers.EmployeeController.MakeEmployeeGUI();
                     break;
                 case 3:
                     //Admin is true
-                    MakeAdminGUI();
+                    Controllers.AdminController.MakeAdminGUI();
                     this.dispose();                    
                     break;
                 default://Default setting is incorrct

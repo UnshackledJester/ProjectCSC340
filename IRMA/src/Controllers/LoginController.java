@@ -5,9 +5,8 @@
  */
 package Controllers;
 
-import static Interfaces.DatabaseInterface.testForEmployees;
-import static Interfaces.DatabaseInterface.testForManager;
-import static Interfaces.ServerInterface.testForAdmin;
+import  Interfaces.DatabaseInterface;
+import  Interfaces.ServerInterface;
 import Views.LoginView;
 import java.io.IOException;
 
@@ -19,9 +18,9 @@ public class LoginController {
     
     //Validation function that calls database interface.
     public static int validateInput(String pass, String user) throws IOException {
-        boolean manager = testForManager(pass, user);
-        boolean employee = testForEmployees(pass, user);
-        boolean admin = testForAdmin(pass, user);
+        boolean manager = Interfaces.DatabaseInterface.testForManager(pass, user);
+        boolean employee = Interfaces.DatabaseInterface.testForEmployee(pass, user);
+        boolean admin = Interfaces.ServerInterface.testForAdmin(pass, user);
 
         if (true == manager) {
             return 1;
