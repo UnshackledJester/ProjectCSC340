@@ -6,7 +6,7 @@
 package Controllers;
 
 
-import static Controllers.LoginController.MakeLogin;
+import  Controllers.LoginController;
 import java.io.IOException;
 /**
  *
@@ -20,7 +20,7 @@ public class IRMAmainController {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-      MakeLogin();
+      LoginController.MakeLogin();
       
     }
 
