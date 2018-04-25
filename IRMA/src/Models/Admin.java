@@ -1,6 +1,8 @@
 package Models;
 
-public class Admin {
+import java.io.Serializable;
+
+public class Admin implements Serializable {
 
     //Variables
     private String username;

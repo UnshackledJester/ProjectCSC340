@@ -24,11 +24,11 @@ public class Customer implements Serializable  {
 
     }
      public String getID() {
-        return UUIdentifier.getUUID();
+        return UUID;
     }
 
     public void setID(){
-        this.UUID = UUIdentifier.getUUID();
+        this.UUID =UUIdentifier.getUUID();;
     }
 
     public boolean isArchived() {

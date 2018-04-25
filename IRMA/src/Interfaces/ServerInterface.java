@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Models.Admin;
 import Models.Customer;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,8 +36,21 @@ public static void saveCustomer(ArrayList<Customer> arr)throws Exception //write
          return Customer;
     
 }
-    public static void main(String[] args) throws Exception
+  public static void saveAdmin(ArrayList<Admin> arr)throws Exception //writes the array of Customer to a file "Customer.ser"
     {
-            System.out.println(getCustomer());
-        }
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("admins.txt"));
+        os.writeObject(arr);
+        os.close();
+    }
+    public static ArrayList<Admin> loadAdmin()throws Exception //Reads the array of Customer back from file.
+    {
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("admins.txt"));
+        ArrayList<Admin> arr = (ArrayList<Admin>) oin.readObject();
+        oin.close();
+        return arr;
+    }
+    public static ArrayList<Admin> getAdmin() throws Exception{
+        ArrayList<Admin> Admin = loadAdmin();
+         return Admin; 
+}
 }
