@@ -7,6 +7,7 @@ package Controllers;
 
 import Interfaces.DatabaseInterface;
 import static Interfaces.DatabaseInterface.loadManager;
+import Interfaces.InformationSelection;
 import Models.Manager;
 import Views.AdminView;
 import java.io.IOException;
@@ -18,9 +19,17 @@ import java.util.Scanner;
  *
  * @author Chronos
  */
-public class AdminControllerTest {
+public class AdminController {
+        public static Interfaces.InformationSelection choice;
 
-    private AdminControllerTest() {
+        public static void setChoice(InformationSelection newChoice){
+            choice = newChoice;
+        }
+    public static InformationSelection getChoice(){
+    return choice;
+}
+
+    private AdminController() {
     }
 
     //Generate Admin HUI

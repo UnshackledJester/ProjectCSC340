@@ -5,6 +5,9 @@
  */
 package Views;
 
+import Controllers.AdminController;
+import Interfaces.InformationSelection;
+
 /**
  *
  * @author Chronos
@@ -13,11 +16,13 @@ public class InformationView extends javax.swing.JFrame {
 
     /**
      * Creates new form InformationView
+     * @param choice
      */
     public InformationView() {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,11 +60,21 @@ public class InformationView extends javax.swing.JFrame {
         lnlEmail.setText("Email");
 
         btnEnter.setText("Enter");
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
 
         btnCancel.setForeground(new java.awt.Color(255, 0, 0));
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         lblError.setText("Error: Generic Error");
 
@@ -132,6 +147,23 @@ public class InformationView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+       
+        // TODO add your handling code here:
+        InformationSelection choice = AdminController.getChoice();
+        
+        
+        switch(choice){
+            case ADMINADD: System.out.println("Worked");
+            
+        }
+    }//GEN-LAST:event_btnEnterActionPerformed
 
     /**
      * @param args the command line arguments

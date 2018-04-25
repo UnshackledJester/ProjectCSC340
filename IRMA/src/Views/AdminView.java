@@ -5,18 +5,24 @@
  */
 package Views;
 
+import Controllers.AdminController;
+import Interfaces.InformationSelection;
+
 /**
  *
  * @author Chronos
  */
 public class AdminView extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form AdminView
      */
     public AdminView() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,13 +42,33 @@ public class AdminView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAdd.setText("Add New Manager");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnMod.setText("Modify Manager");
+        btnMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModActionPerformed(evt);
+            }
+        });
 
         btnDel.setText("Delete Manager");
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelActionPerformed(evt);
+            }
+        });
 
         btnLogout.setForeground(new java.awt.Color(255, 0, 0));
         btnLogout.setText("Log Out");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         lblError.setText("Error: Generic Error");
 
@@ -83,6 +109,37 @@ public class AdminView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        LoginView logv = new LoginView();
+      logv.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        InformationView infoV = new InformationView();
+        infoV.setVisible(true);
+        AdminController.setChoice(InformationSelection.ADMINADD);
+        
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
+        // TODO add your handling code here:
+        InformationView infoV = new InformationView();
+        infoV.setVisible(true);
+        AdminController.setChoice(InformationSelection.ADMINMOD);
+        
+    }//GEN-LAST:event_btnModActionPerformed
+
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        // TODO add your handling code here:
+        InformationView infoV = new InformationView();
+        infoV.setVisible(true);
+        AdminController.setChoice(InformationSelection.ADMINDEL);
+        
+    }//GEN-LAST:event_btnDelActionPerformed
 
     /**
      * @param args the command line arguments

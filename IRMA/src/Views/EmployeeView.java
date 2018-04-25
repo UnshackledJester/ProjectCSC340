@@ -43,6 +43,11 @@ public class EmployeeView extends javax.swing.JFrame {
 
         btnLogout.setForeground(new java.awt.Color(255, 0, 0));
         btnLogout.setText("Log Out");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         lblError.setText("Error: Generic Error");
 
@@ -79,6 +84,13 @@ public class EmployeeView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        LoginView logv = new LoginView();
+      logv.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,8 @@
  */
 package Views;
 
+import Controllers.LoginController;
+
 /**
  *
  * @author Chronos
@@ -52,6 +54,11 @@ public class ManagerView extends javax.swing.JFrame {
 
         btnLogout.setForeground(new java.awt.Color(204, 0, 0));
         btnLogout.setText("Log out");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         lblError.setText("Error: Generic Error");
 
@@ -102,6 +109,13 @@ public class ManagerView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        LoginView logv = new LoginView();
+      logv.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments

@@ -19,8 +19,8 @@ public class LoginController {
     public LoginController() {
     }
 
-    public void UserInput(String user,String pass) throws IOException{
-        LoginEnum validate = Interfaces.ValidateInfo.validateInput(pass, user);
+    public static void UserInput(String user,String pass) throws IOException, Exception{
+        LoginEnum validate = Models.Authentication.validateInput(pass, user);
         validate.loginVal();
     switch(validate){
         case  ADMIN:{

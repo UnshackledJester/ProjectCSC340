@@ -5,6 +5,10 @@
  */
 package Views;
 
+import Controllers.LoginController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Chronos
@@ -44,6 +48,11 @@ public class LoginView extends javax.swing.JFrame {
 
         btnEnter.setForeground(new java.awt.Color(0, 153, 0));
         btnEnter.setText("Enter");
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterActionPerformed(evt);
+            }
+        });
 
         btnExit.setForeground(new java.awt.Color(255, 0, 0));
         btnExit.setText("Exit");
@@ -102,6 +111,17 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        // TODO add your handling code here:
+        String user = txtUsername.getText();
+        String password = txtPassword.getText();
+        try {
+            LoginController.UserInput(user,password);
+        } catch (Exception ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEnterActionPerformed
 
     /**
      * @param args the command line arguments
