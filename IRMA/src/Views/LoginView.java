@@ -9,6 +9,7 @@ import static Controllers.AdminControllerTest.MakeAdminGUI;
 import static Controllers.EmployeeController.MakeEmployeeGUI;
 import static Controllers.LoginController.validateInput;
 import static Controllers.ManagerController.MakeManagerGUI;
+import Utility.RegisterMessage;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -136,15 +137,15 @@ public class LoginView extends javax.swing.JFrame {
             //Try catch to validate input;
             int valid = validateInput(txtPass.getText(), txtUser.getText());
             switch (valid) {
-                case 1:
+                case RegisterMessage.MANAGER_PANEL:
                     //Manager is true
                     MakeManagerGUI();
                     break;
-                case 2:
+                case RegisterMessage.EMPLOYEE_PANEL:
                     //Employee is true
                     MakeEmployeeGUI();
                     break;
-                case 3:
+                case RegisterMessage.ADMIN_PANEL:
                     //Admin is true
                     MakeAdminGUI();
                     this.dispose();                    
