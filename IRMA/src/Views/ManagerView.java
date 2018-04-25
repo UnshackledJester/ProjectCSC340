@@ -27,17 +27,77 @@ public class ManagerView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAddC = new javax.swing.JButton();
+        btnModC = new javax.swing.JButton();
+        btnDelC = new javax.swing.JButton();
+        btnAddE = new javax.swing.JButton();
+        btnModE = new javax.swing.JButton();
+        btnDelE = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        lblError = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnAddC.setText("Add New Customer");
+
+        btnModC.setText("Modify Customer");
+
+        btnDelC.setText("Delete Customer");
+
+        btnAddE.setText("Add New Employee");
+
+        btnModE.setText("Modify Employee");
+
+        btnDelE.setText("Delete Employee");
+
+        btnLogout.setForeground(new java.awt.Color(204, 0, 0));
+        btnLogout.setText("Log out");
+
+        lblError.setText("Error: Generic Error");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAddC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDelE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAddE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDelC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addComponent(lblError))
+                    .addComponent(btnLogout))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAddC)
+                .addGap(18, 18, 18)
+                .addComponent(btnModC)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelC))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblError)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAddE)
+                .addGap(18, 18, 18)
+                .addComponent(btnModE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDelE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,12 +133,19 @@ public class ManagerView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //Initialise view.
                 new ManagerView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddC;
+    private javax.swing.JButton btnAddE;
+    private javax.swing.JButton btnDelC;
+    private javax.swing.JButton btnDelE;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnModC;
+    private javax.swing.JButton btnModE;
+    private javax.swing.JLabel lblError;
     // End of variables declaration//GEN-END:variables
 }

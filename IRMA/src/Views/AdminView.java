@@ -1,30 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Views;
 
-import  Models.Manager;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+/**
+ *
+ * @author Chronos
+ */
 public class AdminView extends javax.swing.JFrame {
 
-//New AdminView Form
+    /**
+     * Creates new form AdminView
+     */
     public AdminView() {
         initComponents();
-        //Set initial visibility
-        txtID.setVisible(false);
-        txtFirstName.setVisible(false);
-        txtLastName.setVisible(false);
-        txtEmail.setVisible(false);
-        txtUsername.setVisible(false);
-        txtPassword.setVisible(false);
-
-        lblID.setVisible(false);
-        lblFirst.setVisible(false);
-        lblLast.setVisible(false);
-        lblEmail.setVisible(false);
-        lblUsername.setVisible(false);
-        lblPass.setVisible(false);
-        lblError.setVisible(false);
     }
 
     /**
@@ -38,276 +29,89 @@ public class AdminView extends javax.swing.JFrame {
 
         btnAdd = new javax.swing.JButton();
         btnMod = new javax.swing.JButton();
-        txtID = new javax.swing.JTextField();
-        txtFirstName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
-        lblID = new javax.swing.JLabel();
-        lblFirst = new javax.swing.JLabel();
-        lblLast = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        lblUsername = new javax.swing.JLabel();
-        lblPass = new javax.swing.JLabel();
+        btnDel = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
-        btnFind = new javax.swing.JButton();
-        txtUsername = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAdd.setText("Add New Manager");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
 
-        btnMod.setText("Save Changes");
-        btnMod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModActionPerformed(evt);
-            }
-        });
+        btnMod.setText("Modify Manager");
 
-        txtID.setMinimumSize(new java.awt.Dimension(117, 20));
+        btnDel.setText("Delete Manager");
 
-        lblID.setText("ID");
+        btnLogout.setForeground(new java.awt.Color(255, 0, 0));
+        btnLogout.setText("Log Out");
 
-        lblFirst.setText("First Name");
-
-        lblLast.setText("Last Name");
-
-        lblEmail.setText("Email");
-
-        lblUsername.setText("Username");
-
-        lblPass.setText("Password");
-
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
-        btnSave.setText("Save New Manager");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        lblError.setText("Error: Manager not found.");
-
-        btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnFind.setText("Find a Manager");
-        btnFind.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindActionPerformed(evt);
-            }
-        });
+        lblError.setText("Error: Generic Error");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSave)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(btnSearch)))
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblFirst, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblPass, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(lblLast, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUsername)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmail)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                                    .addComponent(txtFirstName)
-                                    .addComponent(txtLastName)
-                                    .addComponent(btnClear, javax.swing.GroupLayout.Alignment.CENTER))
-                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLogout)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnLogout)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnFind, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(156, 156, 156)
                         .addComponent(lblError)))
-                .addContainerGap())
+                .addContainerGap(150, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtFirstName, txtLastName, txtPassword});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblError)
-                    .addComponent(btnFind))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblID))
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFirst))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLast))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPass)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUsername)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(btnSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMod)
-                        .addGap(58, 58, 58)
-                        .addComponent(btnAdd)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSave)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogout)
-                    .addComponent(btnClear))
-                .addContainerGap())
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
+                .addComponent(btnMod)
+                .addGap(18, 18, 18)
+                .addComponent(btnDel)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(lblError)
+                .addGap(62, 62, 62))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        Controllers.LoginController.MakeLogin();
-        //If logout is clicked, close this out and remake login window
-        this.dispose();
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        clearFields();//Clear error label
-        lblError.setVisible(false);
-
-    }//GEN-LAST:event_btnClearActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        //Make fields visible for use when selecting "Add new manager"
-        txtID.setVisible(true);
-        txtFirstName.setVisible(true);
-        txtLastName.setVisible(true);
-        txtEmail.setVisible(true);
-        txtUsername.setVisible(true);
-        txtPassword.setVisible(true);
-
-        lblID.setVisible(true);
-        lblFirst.setVisible(true);
-        lblLast.setVisible(true);
-        lblEmail.setVisible(true);
-        lblUsername.setVisible(true);
-        lblPass.setVisible(true);
-
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        try {
-            //Add new manager to textfile
-            Controllers.AdminController.addManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
-                    txtUsername.getText(), txtPassword.getText());
-            clearFields();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-        }    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
-//Try/catch to modify an existing manager based on information within the text fields.
-        try {
-            Manager manager = new Manager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
-                    txtUsername.getText(), txtPassword.getText());
-            Controllers.AdminController.modManager(manager, txtID.getText());
-            clearFields();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_btnModActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        try {
-            //Try catch to get an array with manager variables(Will be reworked for simplicity
-            Manager array = Controllers.AdminController.findManagerID(txtID.getText());
-            setFields(array);
-
-        } catch (IOException ex) {
-            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(AdminView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        //Set fields visible for searching for a Manager
-        lblID.setVisible(true);
-        lblUsername.setVisible(true);
-        txtID.setVisible(true);
-        txtUsername.setVisible(true);    }//GEN-LAST:event_btnFindActionPerformed
-
-    //default java stuff
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminView().setVisible(true);
@@ -315,85 +119,11 @@ public class AdminView extends javax.swing.JFrame {
         });
     }
 
-    public void setFields(Manager manager) {
-        /*Horribly coded section to fill in text fields
-        Spent an hour trouble shooting only to find out
-        recoding it without changing anything fixed it.
-        Java is buggy*/
-        txtID.setText(manager.getID());
-        txtFirstName.setText(manager.getFirstname());
-        txtLastName.setText(manager.getLastname());
-        txtEmail.setText(manager.getEmail());
-        txtUsername.setText(manager.getUsername());
-        txtPassword.setText(manager.getPassword());
-        //Hide ID from access so that the universal(eventually) ID cannot be changed.
-        txtID.setVisible(false);
-        txtFirstName.setVisible(true);
-        txtLastName.setVisible(true);
-        txtEmail.setVisible(true);
-        txtUsername.setVisible(true);
-        txtPassword.setVisible(true);
-
-        lblID.setVisible(true);
-        lblFirst.setVisible(true);
-        lblLast.setVisible(true);
-        lblEmail.setVisible(true);
-        lblUsername.setVisible(true);
-        lblPass.setVisible(true);
-    }
-
-    public void clearFields() {
-
-        txtID.setText(null);
-        txtFirstName.setText(null);
-        txtLastName.setText(null);
-        txtEmail.setText(null);
-        txtUsername.setText(null);
-        txtPassword.setText(null);
-
-        //Hide text fields and labels
-        txtID.setText(" ");
-        txtFirstName.setText(" ");
-        txtLastName.setText(" ");
-        txtEmail.setText(" ");
-        txtUsername.setText(" ");
-        txtPassword.setText(" ");
-
-        txtID.setVisible(false);
-        txtFirstName.setVisible(false);
-        txtLastName.setVisible(false);
-        txtEmail.setVisible(false);
-        txtUsername.setVisible(false);
-        txtPassword.setVisible(false);
-
-        lblID.setVisible(false);
-        lblFirst.setVisible(false);
-        lblLast.setVisible(false);
-        lblEmail.setVisible(false);
-        lblUsername.setVisible(false);
-        lblPass.setVisible(false);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnFind;
+    private javax.swing.JButton btnDel;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMod;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblError;
-    private javax.swing.JLabel lblFirst;
-    private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblLast;
-    private javax.swing.JLabel lblPass;
-    private javax.swing.JLabel lblUsername;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
