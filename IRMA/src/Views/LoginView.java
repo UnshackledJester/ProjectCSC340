@@ -5,7 +5,7 @@
  */
 package Views;
 
-import static Controllers.AdminController.MakeAdminGUI;
+import static Controllers.AdminControllerTest.MakeAdminGUI;
 import static Controllers.EmployeeController.MakeEmployeeGUI;
 import static Controllers.LoginController.validateInput;
 import static Controllers.ManagerController.MakeManagerGUI;

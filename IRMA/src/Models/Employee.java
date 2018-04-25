@@ -11,7 +11,7 @@ public class Employee implements Serializable  {
     private String email;
     private String password;
     private String username;
-
+    private boolean Archived;
     //Constructor
     public Employee(String id, String firstName, String lastName, String email, String username, String password) {
         this.ID = id;
@@ -20,7 +20,17 @@ public class Employee implements Serializable  {
         this.email = email;
         this.username = username;
         this.password = password;
+        this.Archived = false;
+        
 
+    }
+
+    public boolean isArchived() {
+        return Archived;
+    }
+
+    public void setArchived(boolean Archived) {
+        this.Archived = Archived;
     }
 
     //Override to string for testing purposes

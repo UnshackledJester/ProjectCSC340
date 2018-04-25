@@ -14,20 +14,20 @@ public class DatabaseInterface {
     //Method to get Manager array
      public static ArrayList<Manager> loadManager()throws Exception //Reads the array of Customer back from file.
     {
-        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("managers.txt"));
         ArrayList<Manager> managerArray = (ArrayList<Manager>) oin.readObject();
         oin.close();
         return managerArray;
     }
      public static void saveManager(ArrayList<Manager> managerArray)throws Exception //writes the array of Customer to a file "Customer.ser"
-    {
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\User.txt"));
+    {   
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("managers.txt"));
         os.writeObject(managerArray);
         os.close();
     }
      public static Employee[] loadEmployee()throws Exception //Reads the array of Customer back from file.
     {
-        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("managers.txt"));
         Employee[] employeeArray = (Employee[]) oin.readObject();
         oin.close();
         return employeeArray;
@@ -43,6 +43,7 @@ public class DatabaseInterface {
         for (Manager p : Manager)
         {
             System.out.println(p);
+            System.out.println("LOADED MANAGERS");
         }
          return Manager;
     }
@@ -55,13 +56,13 @@ public class DatabaseInterface {
         }
          return Employee;
     }
-     /* public static void main(String[] args) throws Exception
+   /*  public static void main(String[] args) throws Exception
     {
         
        ArrayList<Manager> arr= new  ArrayList<Manager>();
-       arr.add(new Manager("123", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+       arr.add(new Manager("123", "Jerry", "Spencer", "Jspencer@ucng.edu", "jerspec", "Pandas"));
        arr.add(new Manager("456", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
-       arr.add(new Manager("789", "Hieu", "Vo", "Hvvo@ucng.edu", "hvvo", "1"));
+       arr.add(new Manager("789", "KAren", "Ooblong", "KOblong@ucng.edu", "Kbaby", "Koalas"));
 
         
         System.out.println("Saving array to file");
@@ -72,7 +73,8 @@ public class DatabaseInterface {
         {
             System.out.println(p);
         }
-       
+         
+        
     } */
 }
 /*
