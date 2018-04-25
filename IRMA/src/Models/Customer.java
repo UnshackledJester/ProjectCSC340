@@ -1,26 +1,42 @@
 package Models;
 
+import Utility.UUIdentifier;
 import java.io.Serializable;
 
 public class Customer implements Serializable  {
     //Variables for Customers
-    private String ID;
+    private String UUID;
     private String firstname;
     private String lastname;
     private String email;
     private String password;
     private String username;
-
-    //Stub for future use
+    private boolean Archived;
     //Constructor
-    public Customer(String id, String firstname, String lastname, String email, String username, String password) {
-        this.ID = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Customer(String firstName, String lastName, String email, String username, String password) {
+        this.firstname = firstName;
+        this.lastname = lastName;
         this.email = email;
-        this.password = password;
         this.username = username;
+        this.password = password;
+        this.Archived = false;
         
+
+    }
+     public String getID() {
+        return UUIdentifier.getUUID();
+    }
+
+    public void setID(){
+        this.UUID = UUIdentifier.getUUID();
+    }
+
+    public boolean isArchived() {
+        return Archived;
+    }
+
+    public void setArchived(boolean Archived) {
+        this.Archived = Archived;
     }
 
   //Getters and setters
@@ -45,13 +61,6 @@ public class Customer implements Serializable  {
         this.email = email;
     }
 
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -71,7 +80,7 @@ public class Customer implements Serializable  {
 //To String override for testing purposes
     @Override
     public String toString() {
-        return (this.ID + "," + this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password).toLowerCase();
+        return (this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password).toLowerCase();
     }
 
 }

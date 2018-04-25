@@ -10,27 +10,28 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  *
  * @author Chronos
  */
 public class ServerInterface {
-public static void saveCustomer(Customer[] arr)throws Exception //writes the array of Customer to a file "Customer.ser"
+public static void saveCustomer(ArrayList<Customer> arr)throws Exception //writes the array of Customer to a file "Customer.ser"
     {
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\User.txt"));
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("customers.txt"));
         os.writeObject(arr);
         os.close();
     }
-    public static Customer[] loadCustomer()throws Exception //Reads the array of Customer back from file.
+    public static ArrayList<Customer> loadCustomer()throws Exception //Reads the array of Customer back from file.
     {
-        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\User.txt"));
-        Customer[] arr = (Customer[]) oin.readObject();
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("customers.txt"));
+        ArrayList<Customer> arr = (ArrayList<Customer>) oin.readObject();
         oin.close();
         return arr;
     }
-    public static Customer[] getCustomer() throws Exception{
-        Customer[] Customer = loadCustomer();
+    public static ArrayList<Customer> getCustomer() throws Exception{
+        ArrayList<Customer> Customer = loadCustomer();
          return Customer;
     
 }

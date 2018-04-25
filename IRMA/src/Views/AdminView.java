@@ -6,12 +6,11 @@
 package Views;
 
 import static Controllers.LoginController.MakeLogin;
-import static Controllers.AdminControllerTest.addManager;
-import Controllers.AdminControllerTest;
-import static Controllers.AdminControllerTest.findManagerUser;
-import static Controllers.AdminControllerTest.modManager;
-import static Controllers.AdminControllerTest.removeManager;
 import Models.Manager;
+import static Models.ManagerMod.addManager;
+import static Models.ManagerMod.findManagerUser;
+import static Models.ManagerMod.modManager;
+import static Models.ManagerMod.removeManager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -306,7 +305,7 @@ public class AdminView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
             // TODO add your handling code here:
-            Manager manager = Controllers.AdminControllerTest.findManagerUser(txtID.getText());
+            Manager manager = findManagerUser(txtID.getText());
             if (manager != null) {
                 System.out.println(manager.getID());
                 setFields(manager);
@@ -350,7 +349,7 @@ public class AdminView extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         try {
             // TODO add your handling code here:
-            Manager manager = Controllers.AdminControllerTest.findManagerUser(txtID.getText());
+            Manager manager = findManagerUser(txtID.getText());
             if (manager != null) {
                 System.out.println(manager.getID());
                 setFields(manager);

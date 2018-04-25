@@ -25,16 +25,16 @@ public class DatabaseInterface {
         os.writeObject(managerArray);
         os.close();
     }
-     public static Employee[] loadEmployee()throws Exception //Reads the array of Customer back from file.
+     public static ArrayList<Employee> loadEmployee()throws Exception //Reads the array of Customer back from file.
     {
-        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("managers.txt"));
-        Employee[] employeeArray = (Employee[]) oin.readObject();
+        ObjectInputStream oin = new ObjectInputStream(new FileInputStream("employees.txt"));
+        ArrayList<Employee> employeeArray = (ArrayList<Employee>) oin.readObject();
         oin.close();
         return employeeArray;
     }
-     public static void saveEmployee(Employee[] employeeArray)throws Exception //writes the array of Customer to a file "Customer.ser"
+     public static void saveEmployee(ArrayList<Employee> employeeArray)throws Exception //writes the array of Customer to a file "Customer.ser"
     {
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\User.txt"));
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("employees.txt"));
         os.writeObject(employeeArray);
         os.close();
     }
@@ -47,15 +47,15 @@ public class DatabaseInterface {
         }
          return Manager;
     }
-    public static Employee[] getEmployee() throws Exception{
-        Employee[] Employee = loadEmployee();
+    public static ArrayList<Employee> getEmployee() throws Exception{
+        ArrayList<Employee> Employee = loadEmployee();
         
          for (Employee p : Employee)
         {
             System.out.println(p);
         }
          return Employee;
-    }
+    } /*
      public static void main(String[] args) throws Exception
     {
         
@@ -83,7 +83,7 @@ public class DatabaseInterface {
         }
          
         
-    } 
+    } */
 }
 /*
     //Method to get Employee array
