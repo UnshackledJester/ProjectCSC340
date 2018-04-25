@@ -7,9 +7,9 @@ import java.io.Serializable;
 public class Manager extends Employee implements Serializable  {
 
     //constructor
-    public Manager(String id, String firstName, String lastName, String email, String username, String password) {
+    public Manager(String firstName, String lastName, String email, String username, String password) {
         //Super use of extention class
-        super(id, firstName, lastName, email, username, password);
+        super(firstName, lastName, email, username, password);
     }
 
     //Override to string for testing purposes.

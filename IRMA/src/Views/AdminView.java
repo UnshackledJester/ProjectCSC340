@@ -294,7 +294,7 @@ public class AdminView extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         try {
             //Add new manager to textfile
-            addManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
+            addManager( txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(),
                     txtUsername.getText(), txtPassword.getText());
             clearFields();
         } catch (IOException ex) {
@@ -306,7 +306,7 @@ public class AdminView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
             // TODO add your handling code here:
-            Manager manager = Controllers.AdminControllerTest.findManagerID(txtID.getText());
+            Manager manager = Controllers.AdminControllerTest.findManagerUser(txtID.getText());
             if (manager != null) {
                 System.out.println(manager.getID());
                 setFields(manager);
@@ -330,7 +330,7 @@ public class AdminView extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             System.out.println("Test1");
-            modManager(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText());
+            modManager( txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText());
             System.out.println("Test2");
             clearFields();
             System.out.println("Test3");
@@ -350,7 +350,7 @@ public class AdminView extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         try {
             // TODO add your handling code here:
-            Manager manager = Controllers.AdminControllerTest.findManagerID(txtID.getText());
+            Manager manager = Controllers.AdminControllerTest.findManagerUser(txtID.getText());
             if (manager != null) {
                 System.out.println(manager.getID());
                 setFields(manager);

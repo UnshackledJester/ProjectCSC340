@@ -31,14 +31,14 @@ public class AdminControllerTest {
     }
 
     //Method to add new managers for Admin
-    public static void addManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static void addManager( String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current managers, and add one more index
         ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = id;
+        String test = username;
 
         boolean save = true;
         for (Manager manager : arr) {
-            if (manager.getID().contains(test)) {
+            if (manager.getUsername().contains(test)) {
                 System.out.println(" ID already exist");
                 save = false;
             }
@@ -47,18 +47,18 @@ public class AdminControllerTest {
 
         }
         if (save) {
-            arr.add(new Manager(id, firstName, lastName, email, username, password));
+            arr.add(new Manager(firstName, lastName, email, username, password));
             DatabaseInterface.saveManager(arr);
             System.out.println("WOULD HAVE SAVED");
         }
     }
 
-    public static Manager removeManager(String id) throws IOException, Exception {
+    public static Manager removeManager(String username) throws IOException, Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = id;
+        String test = username;
         System.out.println(test);
         for (Manager manager : arr) {
-            if (manager.getID().contains(test)) {
+            if (manager.getUsername().contains(test)) {
                 manager.setArchived(true);
                 DatabaseInterface.saveManager(arr);
             }
@@ -68,26 +68,15 @@ public class AdminControllerTest {
         return null;
     }
 
+   
+
     public static Manager findManagerUser(String username) throws IOException, Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         String test = username;
         System.out.println(test);
-        for (Manager manager : arr) {
-            if (manager.getUsername().equals(test)) {
-                
-                return manager;
-            }
-        }
-        return null;
-    }
-
-    public static Manager findManagerID(String ID) throws IOException, Exception {
-        ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = ID;
-        System.out.println(test);
         System.out.println("proof");
         for (Manager manager : arr) {
-            if (manager.getID().equals(test)&& manager.isArchived()) {
+            if (manager.getUsername().equals(test)&& manager.isArchived()) {
                 System.out.println("ARCHIVED BITCH");
                 return manager;
             }
@@ -96,9 +85,9 @@ public class AdminControllerTest {
 
     }
 
-    public static void modManager(String id, String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
-        Manager modManager = new Manager(id, firstName, lastName, email, username, password);
-        String test = id;
+    public static void modManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+        Manager modManager = new Manager(firstName, lastName, email, username, password);
+        String test = username;
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
             if (manager.getID().contains(test)) {
@@ -118,8 +107,7 @@ public class AdminControllerTest {
 
         switch (i) {
             case 1:
-                Scanner id = new Scanner(System.in);
-                String id1 = id.nextLine();
+                
                 Scanner firstname = new Scanner(System.in);
                 String fname1 = firstname.nextLine();
                 Scanner lastname = new Scanner(System.in);
@@ -130,15 +118,14 @@ public class AdminControllerTest {
                 String user1 = username.nextLine();
                 Scanner password = new Scanner(System.in);
                 String pass1 = password.nextLine();
-                addManager(id1, fname1, lname1, email1, user1, pass1);
+                addManager( fname1, lname1, email1, user1, pass1);
                 ArrayList<Manager> Manager1 = loadManager();
                 for (Manager p : Manager1) {
                     System.out.println(p);
                 }
                 break;
             case 2:
-                Scanner id2 = new Scanner(System.in);
-                String id22 = id2.nextLine();
+               
                 Scanner firstname2 = new Scanner(System.in);
                 String fname22 = firstname2.nextLine();
                 Scanner lastname2 = new Scanner(System.in);
@@ -149,7 +136,7 @@ public class AdminControllerTest {
                 String user22 = username2.nextLine();
                 Scanner password2 = new Scanner(System.in);
                 String pass22 = password2.nextLine();
-                modManager(id22, fname22, lname22, email22, user22, pass22);
+                modManager(fname22, lname22, email22, user22, pass22);
                 ArrayList<Manager> Manager2 = loadManager();
                 for (Manager p : Manager2) {
                     System.out.println(p);
@@ -165,7 +152,7 @@ public class AdminControllerTest {
             case 4:
                 Scanner id4 = new Scanner(System.in);
                 String id44 = id4.nextLine();
-                findManagerID(id44);
+                findManagerUser(id44);
                 default:
         System.out.println("Woops");
                 break;

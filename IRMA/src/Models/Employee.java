@@ -1,11 +1,11 @@
 package Models;
 
 import java.io.Serializable;
-
+import Utility.UUIdentifier;
 public class Employee implements Serializable  {
     //initialises variables
 
-    private String ID;
+    private String UUID;
     private String firstname;
     private String lastname;
     private String email;
@@ -13,8 +13,7 @@ public class Employee implements Serializable  {
     private String username;
     private boolean Archived;
     //Constructor
-    public Employee(String id, String firstName, String lastName, String email, String username, String password) {
-        this.ID = id;
+    public Employee(String firstName, String lastName, String email, String username, String password) {
         this.firstname = firstName;
         this.lastname = lastName;
         this.email = email;
@@ -41,12 +40,13 @@ public class Employee implements Serializable  {
 
     //Getters and setters
     public String getID() {
-        return ID;
+        return UUID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setID(){
+        this.UUID = UUIdentifier.getUUID();
     }
+   
 
     public String getFirstname() {
         return firstname;
