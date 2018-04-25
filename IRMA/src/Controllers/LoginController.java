@@ -5,11 +5,11 @@
  */
 package Controllers;
 
-import  Interfaces.DatabaseInterface;
-import  Interfaces.LoginEnum;
-import  Interfaces.ServerInterface;
+import Interfaces.LoginEnum;
+import Views.AdminView;
+import Views.EmployeeView;
 import Views.LoginView;
-import Interfaces.ValidateInfo;
+import Views.ManagerView;
 import java.io.IOException;
 
 public class LoginController {
@@ -17,11 +17,36 @@ public class LoginController {
     public LoginController() {
     }
 
+    public void UserInput(String user,String pass) throws IOException{
+        LoginEnum validate = Interfaces.ValidateInfo.validateInput(pass, user);
+        validate.loginVal();
+    switch(validate){
+        case  ADMIN:{
+            AdminView adminV = new AdminView();
+            adminV.setVisible(true);
+            break;
+        }
+        case MANAGER:{
+            ManagerView managerV = new ManagerView();
+            managerV.setVisible(true);
+            
+            break;
+        }
+        case EMPLOYEE:{
+            EmployeeView employeeV = new EmployeeView();
+            employeeV.setVisible(true);
+            break;
+        }default:{
+            System.out.println("Error");
+        
+        break;
+        }
     
+}
+    }
     //Validation function that calls database interface.
     
-    LoginEnum testInfo = Interfaces.ValidateInfo.validateInput(pass, user);
-    //Make view for LoginView.
+   
     public static void MakeLogin(){
     LoginView logv = new LoginView();
       logv.setVisible(true);
