@@ -18,12 +18,12 @@ import java.util.Scanner;
  *
  * @author Chronos
  */
-public class ManagerMod{
+public class ManagerMod {
 
     private ManagerMod() {
     }
 
-    public static void addManager( String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static void addManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current managers, and add one more index
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         String test = username;
@@ -39,7 +39,10 @@ public class ManagerMod{
 
         }
         if (save) {
-            arr.add(new Manager(firstName, lastName, email, username, password));
+            Manager manager = new Manager(firstName, lastName, email, username, password);
+            manager.setID();
+            arr.add(manager);
+            
             DatabaseInterface.saveManager(arr);
             System.out.println("WOULD HAVE SAVED");
         }
@@ -54,27 +57,19 @@ public class ManagerMod{
                 manager.setArchived(true);
                 DatabaseInterface.saveManager(arr);
             }
-            
-
         }
         return null;
     }
 
-   
-
     public static Manager findManagerUser(String username) throws IOException, Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         String test = username;
-        System.out.println(test);
-        System.out.println("proof");
         for (Manager manager : arr) {
-            if (manager.getUsername().equals(test)&& manager.isArchived()) {
-                System.out.println("ARCHIVED BITCH");
+            if (manager.getUsername().equals(test) && manager.isArchived()) {
                 return manager;
             }
         }
         return null;
-
     }
 
     public static void modManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
@@ -87,7 +82,6 @@ public class ManagerMod{
                 DatabaseInterface.saveManager(arr);
             }
         }
-
     }
 
     public static void main(String[] args) throws Exception {
@@ -99,7 +93,7 @@ public class ManagerMod{
 
         switch (i) {
             case 1:
-                
+
                 Scanner firstname = new Scanner(System.in);
                 String fname1 = firstname.nextLine();
                 Scanner lastname = new Scanner(System.in);
@@ -110,14 +104,14 @@ public class ManagerMod{
                 String user1 = username.nextLine();
                 Scanner password = new Scanner(System.in);
                 String pass1 = password.nextLine();
-                addManager( fname1, lname1, email1, user1, pass1);
+                addManager(fname1, lname1, email1, user1, pass1);
                 ArrayList<Manager> Manager1 = loadManager();
                 for (Manager p : Manager1) {
                     System.out.println(p);
                 }
                 break;
             case 2:
-               
+
                 Scanner firstname2 = new Scanner(System.in);
                 String fname22 = firstname2.nextLine();
                 Scanner lastname2 = new Scanner(System.in);
@@ -139,21 +133,16 @@ public class ManagerMod{
                 String id33 = id3.nextLine();
                 removeManager(id33);
                 ArrayList<Manager> Manager3 = DatabaseInterface.getManager();
-               
+
                 break;
             case 4:
                 Scanner id4 = new Scanner(System.in);
                 String id44 = id4.nextLine();
                 findManagerUser(id44);
-                default:
-        System.out.println("Woops");
+            default:
+                System.out.println("Woops");
                 break;
 
-                }
-         
-        
         }
-
     }
-
-
+}
