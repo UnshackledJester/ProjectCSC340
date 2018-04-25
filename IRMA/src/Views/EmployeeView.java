@@ -27,17 +27,54 @@ public class EmployeeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAdd = new javax.swing.JButton();
+        btnMod = new javax.swing.JButton();
+        btnDel = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        lblError = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnAdd.setText("Add New Customer");
+
+        btnMod.setText("Modify Customer");
+
+        btnDel.setText("Delete Customer");
+
+        btnLogout.setForeground(new java.awt.Color(255, 0, 0));
+        btnLogout.setText("Log Out");
+
+        lblError.setText("Error: Generic Error");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogout)
+                    .addComponent(lblError))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
+                .addComponent(btnMod)
+                .addGap(18, 18, 18)
+                .addComponent(btnDel)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addGap(33, 33, 33)
+                .addComponent(lblError)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +116,10 @@ public class EmployeeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDel;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnMod;
+    private javax.swing.JLabel lblError;
     // End of variables declaration//GEN-END:variables
 }

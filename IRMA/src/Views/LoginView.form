@@ -23,109 +23,91 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtPass" min="-2" pref="60" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="txtUser" min="-2" pref="60" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblError" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblUser" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEnter" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtPassword" max="32767" attributes="0"/>
+                          <Component id="txtUsername" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="btnExit" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnEnter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Component id="btnClear" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="117" max="32767" attributes="0"/>
-                      <Component id="btnExit" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblError" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="204" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPass" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="lblError" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="90" max="32767" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnEnter" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnExit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Component id="lblError" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Username"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtUsername">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPassword">
+    </Component>
     <Component class="javax.swing.JButton" name="btnEnter">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Enter"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnterActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblUsername">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="User Name:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPassword">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Password:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtUser">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtPass">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPassActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnClear">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Clear"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblError">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Error: Generic Error"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

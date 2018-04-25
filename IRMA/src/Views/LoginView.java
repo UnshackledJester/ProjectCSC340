@@ -5,16 +5,6 @@
  */
 package Views;
 
-import static Controllers.AdminControllerTest.MakeAdminGUI;
-import static Controllers.EmployeeController.MakeEmployeeGUI;
-import static Controllers.LoginController.validateInput;
-import static Controllers.ManagerController.MakeManagerGUI;
-import Utility.RegisterMessage;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Chronos
@@ -27,7 +17,6 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         lblError.setVisible(false);
-        lblError.setText("Error: Incorrect Username and Password combination.");
     }
 
     /**
@@ -39,24 +28,24 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblUser = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         btnEnter = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        lblUsername = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
-        btnClear = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnEnter.setText("Enter");
-        btnEnter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnterActionPerformed(evt);
-            }
-        });
+        lblUser.setText("Username");
 
+        lblPassword.setText("Password");
+
+        btnEnter.setForeground(new java.awt.Color(0, 153, 0));
+        btnEnter.setText("Enter");
+
+        btnExit.setForeground(new java.awt.Color(255, 0, 0));
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,125 +53,55 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
-        lblUsername.setText("User Name:");
-
-        lblPassword.setText("Password:");
-
-        txtPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassActionPerformed(evt);
-            }
-        });
-
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
+        lblError.setText("Error: Generic Error");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUser)
+                            .addComponent(lblPassword)
+                            .addComponent(btnEnter))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPassword)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblUsername)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEnter)
-                        .addGap(85, 85, 85)
-                        .addComponent(btnClear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                        .addComponent(btnExit)))
-                .addContainerGap())
+                            .addComponent(txtPassword)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(lblError))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsername)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblUser)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblError)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnter)
-                    .addComponent(btnExit)
-                    .addComponent(btnClear))
-                .addGap(32, 32, 32))
+                    .addComponent(btnExit))
+                .addGap(49, 49, 49)
+                .addComponent(lblError)
+                .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        try {
-            //Try catch to validate input;
-            int valid = validateInput(txtPass.getText(), txtUser.getText());
-            switch (valid) {
-                case RegisterMessage.MANAGER_PANEL:
-                    //Manager is true
-                    MakeManagerGUI();
-                    break;
-                case RegisterMessage.EMPLOYEE_PANEL:
-                    //Employee is true
-                    MakeEmployeeGUI();
-                    break;
-                case RegisterMessage.ADMIN_PANEL:
-                    //Admin is true
-                    MakeAdminGUI();
-                    this.dispose();                    
-                    break;
-                default:
-                    txtUser.setVisible(false);
-                    txtPass.setVisible(false);
-                    lblError.setVisible(true); 
-                    break;
-            }
-                
-        } catch (IOException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      
-        
-    }//GEN-LAST:event_btnEnterActionPerformed
-
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        //Exit if you click exit.
+        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
-
-    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        //Clear fields, make visible, and hide error message
-        txtUser.setText(" ");
-        txtPass.setText(" ");
-        txtUser.setVisible(true);
-        txtPass.setVisible(true);
-        lblError.setVisible(false);       
-    }//GEN-LAST:event_btnClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,30 +132,19 @@ public class LoginView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new LoginView().setVisible(true);
             }
         });
     }
 
-    /**
-     *
-     * @param listenForLoginButton
-     */
-    public void addLoginListener(ActionListener listenForLoginButton){
-        btnEnter.addActionListener(listenForLoginButton);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
-    public javax.swing.JButton btnEnter;
+    private javax.swing.JButton btnEnter;
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblUsername;
-    private javax.swing.JTextField txtPass;
-    private javax.swing.JTextField txtUser;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
-
