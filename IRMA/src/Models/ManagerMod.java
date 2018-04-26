@@ -78,7 +78,7 @@ public class ManagerMod {
         String test = username;
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
-            if (manager.getID().contains(test)) {
+            if (manager.getUsername().contains(test)) {
                 Collections.replaceAll(arr, manager, modManager);
                 DatabaseInterface.saveManager(arr);
             }
