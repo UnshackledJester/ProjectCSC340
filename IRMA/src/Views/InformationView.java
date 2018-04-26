@@ -48,19 +48,10 @@ public class InformationView extends javax.swing.JFrame {
         txtLast.setText(null);
     }
 
-    public String getUser() {
-        String user = txtUser.getText();
-        return user;
-    }
-
-    public String getPass() {
-        String pass = txtPass.getText();
-        return pass;
-    }
-
     public void customerSetfields() {
         try {
-            Customer customer = CustomerMod.findCustomerUser(txtUser.getText());
+            String user = txtUser.getText();
+            Customer customer = CustomerMod.findCustomerUser(user);
             if (customer != null) {
                 txtUser.setText(customer.getUsername());
                 txtPass.setText(customer.getPassword());
@@ -78,7 +69,8 @@ public class InformationView extends javax.swing.JFrame {
         try {
 
             System.out.println("Inside setfields");
-            Manager manager = ManagerMod.findManagerUser(txtUser.getText());
+            String user = txtUser.getText();
+            Manager manager = ManagerMod.findManagerUser(user);
             System.out.println("Alpha");
             if (manager != null) {
                 System.out.println("Setting fields");
@@ -96,7 +88,9 @@ public class InformationView extends javax.swing.JFrame {
 
     public void employeeSetFields() {
         try {
-            Employee employee = EmployeeMod.findEmployeeUser(txtUser.getText());
+                        String user = txtUser.getText();
+
+            Employee employee = EmployeeMod.findEmployeeUser(user);
             if (employee != null) {
                 txtUser.setText(employee.getUsername());
                 txtPass.setText(employee.getPassword());
@@ -243,6 +237,7 @@ public class InformationView extends javax.swing.JFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         IRMAmainController.setWindowStatus(false);
+        loadedFields = false;
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
