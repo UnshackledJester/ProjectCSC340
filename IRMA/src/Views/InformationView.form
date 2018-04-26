@@ -52,7 +52,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCancel" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblError" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="lblUUID" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblError" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="135" max="32767" attributes="0"/>
           </Group>
@@ -86,7 +89,9 @@
                   <Component id="lnlEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="lblUUID" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="lblError" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -165,6 +170,11 @@
     <Component class="javax.swing.JLabel" name="lblError">
       <Properties>
         <Property name="text" type="java.lang.String" value="Error: Generic Error"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblUUID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="UUID:"/>
       </Properties>
     </Component>
   </SubComponents>

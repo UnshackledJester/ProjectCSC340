@@ -73,7 +73,7 @@ public class ManagerMod {
         return null;
     }
 
-    public static void modManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static void modManager(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
         Manager modManager = new Manager(firstName, lastName, email, username, password);
         String test = username;
         ArrayList<Manager> arr = DatabaseInterface.getManager();
@@ -124,7 +124,7 @@ public class ManagerMod {
                 String user22 = username2.nextLine();
                 Scanner password2 = new Scanner(System.in);
                 String pass22 = password2.nextLine();
-                modManager(fname22, lname22, email22, user22, pass22);
+                //modManager(fname22, lname22, email22, user22, pass22);
                 ArrayList<Manager> Manager2 = loadManager();
                 for (Manager p : Manager2) {
                     System.out.println(p);

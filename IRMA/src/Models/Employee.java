@@ -23,6 +23,15 @@ public class Employee implements Serializable  {
         
 
     }
+    public Employee(String firstName, String lastName, String email, String username, String password, String _UUID){
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.Archived = false;
+        this.UUID = _UUID;
+    }
 
     public boolean isArchived() {
         return Archived;

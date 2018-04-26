@@ -38,6 +38,8 @@ public class InformationView extends javax.swing.JFrame {
      */
     public InformationView() {
         initComponents();
+        lblUUID.setVisible(false);
+        lblError.setVisible(false);
     }
 
     public void clearFields() {
@@ -80,6 +82,7 @@ public class InformationView extends javax.swing.JFrame {
                 txtEmail.setText(manager.getEmail());
                 txtFirst.setText(manager.getFirstname());
                 txtLast.setText(manager.getLastname());
+                lblUUID.setText(manager.getID());
                 loadedFields = true;
             }
         } catch (Exception ex) {
@@ -128,6 +131,7 @@ public class InformationView extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
+        lblUUID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +169,8 @@ public class InformationView extends javax.swing.JFrame {
 
         lblError.setText("Error: Generic Error");
 
+        lblUUID.setText("UUID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,7 +199,9 @@ public class InformationView extends javax.swing.JFrame {
                         .addComponent(btnClear)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancel))
-                    .addComponent(lblError))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblUUID)
+                        .addComponent(lblError)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
@@ -222,7 +230,9 @@ public class InformationView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lnlEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblUUID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblError)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -265,7 +275,8 @@ public class InformationView extends javax.swing.JFrame {
                     {
                         try {
                             System.out.println("inside save loop");
-                            ManagerMod.modManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            ManagerMod.modManager(txtFirst.getText(), txtLast.getText(),
+                            txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
                         } catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -307,7 +318,7 @@ public class InformationView extends javax.swing.JFrame {
                 if (loadedFields) {
                     {
                         try {
-                            EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
                         } catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -353,7 +364,7 @@ public class InformationView extends javax.swing.JFrame {
                 if (loadedFields) {
                     {
                         try {
-                            CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
                         } catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -439,6 +450,7 @@ public class InformationView extends javax.swing.JFrame {
     private javax.swing.JLabel lblFirst;
     private javax.swing.JLabel lblLast;
     private javax.swing.JLabel lblPass;
+    private javax.swing.JLabel lblUUID;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lnlEmail;
     private javax.swing.JTextField txtEmail;

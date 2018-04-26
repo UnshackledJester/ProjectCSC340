@@ -20,8 +20,15 @@ public class Customer implements Serializable  {
         this.username = username;
         this.password = password;
         this.Archived = false;
-        
-
+    }
+    public Customer(String firstName, String lastName, String email, String username, String password, String _UUID) {
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.Archived = false;
+        this.UUID = _UUID;
     }
      public String getID() {
         return UUID;

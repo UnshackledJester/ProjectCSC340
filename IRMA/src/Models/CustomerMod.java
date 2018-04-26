@@ -6,7 +6,6 @@
 package Models;
 
 import Interfaces.ServerInterface;
-import Models.Customer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -69,8 +68,8 @@ public class CustomerMod {
 
     }
 
-    public static void modCustomer(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
-        Customer modCustomer = new Customer(firstName, lastName, email, username, password);
+    public static void modCustomer(String firstName, String lastName, String email, String username, String password,String _UUID) throws IOException, Exception {
+        Customer modCustomer = new Customer(firstName, lastName, email, username, password,_UUID);
         String test = username;
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         for (Customer customer : arr) {
@@ -120,7 +119,7 @@ public class CustomerMod {
                 String user22 = username2.nextLine();
                 Scanner password2 = new Scanner(System.in);
                 String pass22 = password2.nextLine();
-                modCustomer(fname22, lname22, email22, user22, pass22);
+                //modCustomer(fname22, lname22, email22, user22, pass22);
                 ArrayList<Customer> Customer2 = ServerInterface.loadCustomer();
                 for (Customer p : Customer2) {
                     System.out.println(p);

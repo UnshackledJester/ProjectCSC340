@@ -77,8 +77,8 @@ public class EmployeeMod{
 
     }
 
-    public static void modEmployee(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
-        Employee modEmployee = new Employee(firstName, lastName, email, username, password);
+    public static void modEmployee(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
+        Employee modEmployee = new Employee(firstName, lastName, email, username, password, _UUID);
         String test = username;
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         for (Employee employee : arr) {
@@ -128,7 +128,7 @@ public class EmployeeMod{
                 String user22 = username2.nextLine();
                 Scanner password2 = new Scanner(System.in);
                 String pass22 = password2.nextLine();
-                modEmployee(fname22, lname22, email22, user22, pass22);
+                //modEmployee(fname22, lname22, email22, user22, pass22);
                 ArrayList<Employee> Employee2 = loadEmployee();
                 for (Employee p : Employee2) {
                     System.out.println(p);
