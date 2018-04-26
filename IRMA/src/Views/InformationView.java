@@ -5,14 +5,28 @@
  */
 package Views;
 
-import Controllers.AdminController;
 import Controllers.IRMAmainController;
 import Interfaces.InformationSelection;
+import Models.CustomerMod;
+import Models.EmployeeMod;
+import Models.ManagerMod;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Chronos
  */
+
+
+
+/*
+        txtUser.getText();
+        txtPass.getText();
+        txtEmail.getText();
+        txtFirst.getText();
+        txtLast.getText();
+*/
 public class InformationView extends javax.swing.JFrame {
 
     /**
@@ -21,6 +35,29 @@ public class InformationView extends javax.swing.JFrame {
      */
     public InformationView() {
         initComponents();
+    }
+    public void clearFields(){
+        txtUser.setText(null);
+        txtPass.setText(null);
+        txtEmail.setText(null);
+        txtFirst.setText(null);
+        txtLast.setText(null);
+        }
+    public void setFields(String user, String pass, String firstName, String lastName, String email){
+        txtUser.setText(user);
+        txtPass.setText(pass);
+        txtEmail.setText(email);
+        txtFirst.setText(firstName);
+        txtLast.setText(lastName);
+        }
+    
+    public String getUser(){
+        String user = txtUser.getText();
+        return user;
+        }
+    public String getPass(){
+        String pass = txtPass.getText();    
+        return pass;
     }
 
     
@@ -163,28 +200,90 @@ public class InformationView extends javax.swing.JFrame {
         
         switch(choice){
             case ADMINADD: System.out.println("Worked Admin add");
+        {
+            try {
+                ManagerMod.addManager(txtFirst.getText(),txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
+            
             case ADMINMOD: System.out.println("Worked Admin mod");
+        {
+            try {
+                ManagerMod.modManager(txtFirst.getText(),txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
             case ADMINDEL: System.out.println("Worked Admin del");
-            break;
-            case MANAGERADDC: System.out.println("Worked manager addC");
-            break;
-            case MANAGERMODC: System.out.println("Worked manager modC");
-            break;
-            case MANAGERDELC: System.out.println("Worked managerDelC");
+        {
+            try {
+                ManagerMod.removeManager(txtUser.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
             case MANAGERADDE: System.out.println("Worked managerAddE");
+        {
+            try {
+                EmployeeMod.addEmployee(txtFirst.getText(),txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
             case MANAGERMODE: System.out.println("Worked manager modE");
+        {
+            try {
+                EmployeeMod.modEmployee(txtFirst.getText(),txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
             case MANAGERDELE: System.out.println("Worked manager delE");
+        {
+            try {
+                EmployeeMod.removeEmployee(txtUser.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
+            
+            case MANAGERADDC: System.out.println("Worked manager addC");
             case EMPLOYEEADD: System.out.println("Worked Employee add");
+        {
+            try {
+                CustomerMod.addCustomer(txtFirst.getText(),txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
+            case MANAGERMODC: System.out.println("Worked manager modC");
             case EMPLOYEEMOD: System.out.println("Worked, employee mod");
+        {
+            try {
+                CustomerMod.modCustomer(txtFirst.getText(),txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
+            case MANAGERDELC: System.out.println("Worked managerDelC");
             case EMPLOYEEDEL: System.out.println("Worked, employee del");
+        {
+            try {
+                CustomerMod.removeCustomer(txtUser.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             break;
             default:
                 System.out.println("Error");
@@ -225,6 +324,7 @@ public class InformationView extends javax.swing.JFrame {
             public void run() {
                 new InformationView().setVisible(true);
             }
+            
         });
     }
 

@@ -42,7 +42,7 @@ public class ManagerMod {
             Manager manager = new Manager(firstName, lastName, email, username, password);
             manager.setID();
             arr.add(manager);
-            
+
             DatabaseInterface.saveManager(arr);
             System.out.println("WOULD HAVE SAVED");
         }
