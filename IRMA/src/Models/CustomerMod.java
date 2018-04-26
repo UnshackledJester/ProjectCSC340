@@ -16,12 +16,12 @@ import java.util.Scanner;
  *
  * @author Chronos
  */
-public class CustomerMod{
+public class CustomerMod {
 
     private CustomerMod() {
     }
 
-    public static void addCustomer( String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static void addCustomer(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current Customers, and add one more index
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         String test = username;
@@ -52,22 +52,16 @@ public class CustomerMod{
                 Customer.setArchived(true);
                 ServerInterface.saveCustomer(arr);
             }
-            
 
         }
         return null;
     }
 
-   
-
     public static Customer findCustomerUser(String username) throws IOException, Exception {
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         String test = username;
-        System.out.println(test);
-        System.out.println("proof");
         for (Customer customer : arr) {
-            if (customer.getUsername().equals(test)&& customer.isArchived()) {
-                System.out.println("ARCHIVED BITCH");
+            if (customer.getUsername().equals(test) && customer.isArchived()) {
                 return customer;
             }
         }
@@ -97,7 +91,7 @@ public class CustomerMod{
 
         switch (i) {
             case 1:
-                
+
                 Scanner firstname = new Scanner(System.in);
                 String fname1 = firstname.nextLine();
                 Scanner lastname = new Scanner(System.in);
@@ -108,14 +102,14 @@ public class CustomerMod{
                 String user1 = username.nextLine();
                 Scanner password = new Scanner(System.in);
                 String pass1 = password.nextLine();
-                addCustomer( fname1, lname1, email1, user1, pass1);
+                addCustomer(fname1, lname1, email1, user1, pass1);
                 ArrayList<Customer> Customer1 = ServerInterface.loadCustomer();
                 for (Customer p : Customer1) {
                     System.out.println(p);
                 }
                 break;
             case 2:
-               
+
                 Scanner firstname2 = new Scanner(System.in);
                 String fname22 = firstname2.nextLine();
                 Scanner lastname2 = new Scanner(System.in);
@@ -137,21 +131,18 @@ public class CustomerMod{
                 String id33 = id3.nextLine();
                 removeCustomer(id33);
                 ArrayList<Customer> Customer3 = ServerInterface.getCustomer();
-               
+
                 break;
             case 4:
                 Scanner id4 = new Scanner(System.in);
                 String id44 = id4.nextLine();
                 findCustomerUser(id44);
-                default:
-        System.out.println("Woops");
+            default:
+                System.out.println("Woops");
                 break;
 
-                }
-         
-        
         }
 
     }
 
-
+}

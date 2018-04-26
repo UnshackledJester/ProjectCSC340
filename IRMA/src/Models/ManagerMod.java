@@ -66,6 +66,7 @@ public class ManagerMod {
         String test = username;
         for (Manager manager : arr) {
             if (manager.getUsername().equals(test) && manager.isArchived()) {
+                System.out.println("Manager found");
                 return manager;
             }
         }
