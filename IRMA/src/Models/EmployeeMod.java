@@ -50,7 +50,7 @@ public class EmployeeMod{
         String test = username;
         System.out.println(test);
         for (Employee employee : arr) {
-            if (employee.getUsername().contains(test)) {
+            if (employee.getUsername().contains(test)&& !employee.isArchived()) {
                 employee.setArchived(true);
                 DatabaseInterface.saveEmployee(arr);
             }

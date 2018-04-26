@@ -60,7 +60,7 @@ public class CustomerMod {
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         String test = username;
         for (Customer customer : arr) {
-            if (customer.getUsername().equals(test) && customer.isArchived()) {
+            if (customer.getUsername().equals(test) && !customer.isArchived()) {
                 return customer;
             }
         }
