@@ -49,6 +49,10 @@ public class InformationView extends javax.swing.JFrame {
         txtFirst.setText(null);
         txtLast.setText(null);
     }
+    public boolean hasInfo(){
+        if(!txtFirst.getText().isEmpty() &&!txtLast.getText().isEmpty() 
+                &&!txtEmail.getText().isEmpty() &&!txtUser.getText().isEmpty() &&!txtPass.getText().isEmpty() )
+    }
 
     public void customerSetfields() {
         try {
@@ -261,9 +265,9 @@ public class InformationView extends javax.swing.JFrame {
             case ADMINADD:
                 System.out.println("Worked Admin add");
                  {
-                    try {
+                    try { if (hasInfo()){
                         ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                    } catch (Exception ex) {
+                    }} catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -317,9 +321,9 @@ public class InformationView extends javax.swing.JFrame {
                 System.out.println("Worked manager modE");
                 if (loadedFields) {
                     {
-                        try {
+                        try {if (hasInfo()){
                             EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
-                        } catch (Exception ex) {
+                        }} catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -349,9 +353,9 @@ public class InformationView extends javax.swing.JFrame {
             case EMPLOYEEADD:
                 System.out.println("Worked Employee add");
                  {
-                    try {
+                    try {if (hasInfo()){
                         CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                    } catch (Exception ex) {
+                    }} catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }

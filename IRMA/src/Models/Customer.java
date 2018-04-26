@@ -87,7 +87,7 @@ public class Customer implements Serializable  {
 //To String override for testing purposes
     @Override
     public String toString() {
-        return (this.UUID + "," +this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password).toLowerCase();
+        return (this.UUID + "," +this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password);
     }
 
 }

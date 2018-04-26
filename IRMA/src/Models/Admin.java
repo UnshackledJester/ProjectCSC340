@@ -20,7 +20,7 @@ public class Admin implements Serializable {
     //Override to String for testing purposes
     @Override
     public String toString() {
-        return (this.getUsername() + "," + this.getPassword()).toLowerCase();
+        return (this.getUsername() + "," + this.getPassword());
     }
 
     //Getter and setters

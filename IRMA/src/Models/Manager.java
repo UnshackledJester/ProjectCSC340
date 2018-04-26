@@ -19,7 +19,7 @@ public class Manager extends Employee implements Serializable  {
     //Override to string for testing purposes.
     @Override
     public String toString() {
-        return (this.getID() + "," + this.getFirstname() + "," + this.getLastname() + "," + this.getEmail() + "," + this.getUsername() + "," + this.getPassword()).toLowerCase();
+        return (this.getID() + "," + this.getFirstname() + "," + this.getLastname() + "," + this.getEmail() + "," + this.getUsername() + "," + this.getPassword());
     }
 
 }
