@@ -65,7 +65,7 @@ public class ManagerMod {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         String test = username;
         for (Manager manager : arr) {
-            if (manager.getUsername().equals(test) && manager.isArchived()) {
+            if (manager.getUsername().equals(test) && !manager.isArchived()) {
                 System.out.println("Manager found");
                 return manager;
             }
@@ -80,6 +80,7 @@ public class ManagerMod {
         for (Manager manager : arr) {
             if (manager.getUsername().contains(test)) {
                 Collections.replaceAll(arr, manager, modManager);
+                System.out.println("replacinf man");
                 DatabaseInterface.saveManager(arr);
             }
         }

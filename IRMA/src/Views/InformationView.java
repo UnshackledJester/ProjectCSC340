@@ -72,6 +72,7 @@ public class InformationView extends javax.swing.JFrame {
             String user = txtUser.getText();
             Manager manager = ManagerMod.findManagerUser(user);
             System.out.println("Alpha");
+            System.out.println(manager.getUsername());
             if (manager != null) {
                 System.out.println("Setting fields");
                 txtUser.setText(manager.getUsername());
