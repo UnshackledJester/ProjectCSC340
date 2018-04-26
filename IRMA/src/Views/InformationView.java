@@ -49,9 +49,13 @@ public class InformationView extends javax.swing.JFrame {
         txtFirst.setText(null);
         txtLast.setText(null);
     }
-    public boolean hasInfo(){
-        if(!txtFirst.getText().isEmpty() &&!txtLast.getText().isEmpty() 
-                &&!txtEmail.getText().isEmpty() &&!txtUser.getText().isEmpty() &&!txtPass.getText().isEmpty() )
+
+    public boolean hasInfo() {
+        if (!txtFirst.getText().isEmpty() && !txtLast.getText().isEmpty() && !txtEmail.getText().isEmpty() && !txtUser.getText().isEmpty() && !txtPass.getText().isEmpty()) {
+            return true;
+
+        }
+        return false;
     }
 
     public void customerSetfields() {
@@ -96,7 +100,7 @@ public class InformationView extends javax.swing.JFrame {
 
     public void employeeSetFields() {
         try {
-                        String user = txtUser.getText();
+            String user = txtUser.getText();
 
             Employee employee = EmployeeMod.findEmployeeUser(user);
             if (employee != null) {
@@ -265,9 +269,11 @@ public class InformationView extends javax.swing.JFrame {
             case ADMINADD:
                 System.out.println("Worked Admin add");
                  {
-                    try { if (hasInfo()){
-                        ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                    }} catch (Exception ex) {
+                    try {
+                        if (hasInfo()) {
+                            ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                        }
+                    } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -280,7 +286,7 @@ public class InformationView extends javax.swing.JFrame {
                         try {
                             System.out.println("inside save loop");
                             ManagerMod.modManager(txtFirst.getText(), txtLast.getText(),
-                            txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
+                                    txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -321,9 +327,11 @@ public class InformationView extends javax.swing.JFrame {
                 System.out.println("Worked manager modE");
                 if (loadedFields) {
                     {
-                        try {if (hasInfo()){
-                            EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
-                        }} catch (Exception ex) {
+                        try {
+                            if (hasInfo()) {
+                                EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
+                            }
+                        } catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -353,9 +361,11 @@ public class InformationView extends javax.swing.JFrame {
             case EMPLOYEEADD:
                 System.out.println("Worked Employee add");
                  {
-                    try {if (hasInfo()){
-                        CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                    }} catch (Exception ex) {
+                    try {
+                        if (hasInfo()) {
+                            CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                        }
+                    } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -368,7 +378,7 @@ public class InformationView extends javax.swing.JFrame {
                 if (loadedFields) {
                     {
                         try {
-                            CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(),lblUUID.getText());
+                            CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
