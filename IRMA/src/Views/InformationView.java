@@ -6,6 +6,7 @@
 package Views;
 
 import Controllers.AdminController;
+import Controllers.IRMAmainController;
 import Interfaces.InformationSelection;
 
 /**
@@ -150,17 +151,44 @@ public class InformationView extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
+        IRMAmainController.setWindowStatus(false);
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
        
         // TODO add your handling code here:
-        InformationSelection choice = AdminController.getChoice();
+        InformationSelection choice = IRMAmainController.getChoice();
         
         
         switch(choice){
-            case ADMINADD: System.out.println("Worked");
+            case ADMINADD: System.out.println("Worked Admin add");
+            break;
+            case ADMINMOD: System.out.println("Worked Admin mod");
+            break;
+            case ADMINDEL: System.out.println("Worked Admin del");
+            break;
+            case MANAGERADDC: System.out.println("Worked manager addC");
+            break;
+            case MANAGERMODC: System.out.println("Worked manager modC");
+            break;
+            case MANAGERDELC: System.out.println("Worked managerDelC");
+            break;
+            case MANAGERADDE: System.out.println("Worked managerAddE");
+            break;
+            case MANAGERMODE: System.out.println("Worked manager modE");
+            break;
+            case MANAGERDELE: System.out.println("Worked manager delE");
+            break;
+            case EMPLOYEEADD: System.out.println("Worked Employee add");
+            break;
+            case EMPLOYEEMOD: System.out.println("Worked, employee mod");
+            break;
+            case EMPLOYEEDEL: System.out.println("Worked, employee del");
+            break;
+            default:
+                System.out.println("Error");
+                break;
             
         }
     }//GEN-LAST:event_btnEnterActionPerformed

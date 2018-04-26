@@ -12,6 +12,7 @@ import Views.ManagerView;
  * @author Chronos
  */
 public class ManagerController {
+    
 
     public ManagerController() {
     }

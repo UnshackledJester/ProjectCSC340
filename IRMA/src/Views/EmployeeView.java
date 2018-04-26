@@ -5,6 +5,9 @@
  */
 package Views;
 
+import Controllers.IRMAmainController;
+import Interfaces.InformationSelection;
+
 /**
  *
  * @author Chronos
@@ -36,10 +39,25 @@ public class EmployeeView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAdd.setText("Add New Customer");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnMod.setText("Modify Customer");
+        btnMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModActionPerformed(evt);
+            }
+        });
 
         btnDel.setText("Delete Customer");
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelActionPerformed(evt);
+            }
+        });
 
         btnLogout.setForeground(new java.awt.Color(255, 0, 0));
         btnLogout.setText("Log Out");
@@ -91,6 +109,24 @@ public class EmployeeView extends javax.swing.JFrame {
       logv.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.EMPLOYEEADD);
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.EMPLOYEEMOD);
+    }//GEN-LAST:event_btnModActionPerformed
+
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.EMPLOYEEDEL);
+    }//GEN-LAST:event_btnDelActionPerformed
 
     /**
      * @param args the command line arguments

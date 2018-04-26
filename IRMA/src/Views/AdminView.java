@@ -5,7 +5,7 @@
  */
 package Views;
 
-import Controllers.AdminController;
+import Controllers.IRMAmainController;
 import Interfaces.InformationSelection;
 
 /**
@@ -119,25 +119,23 @@ public class AdminView extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        InformationView infoV = new InformationView();
-        infoV.setVisible(true);
-        AdminController.setChoice(InformationSelection.ADMINADD);
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.ADMINADD);
         
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
         // TODO add your handling code here:
-        InformationView infoV = new InformationView();
-        infoV.setVisible(true);
-        AdminController.setChoice(InformationSelection.ADMINMOD);
+                Controllers.IRMAmainController.MakeInfoView();
+
+        IRMAmainController.setChoice(InformationSelection.ADMINMOD);
         
     }//GEN-LAST:event_btnModActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         // TODO add your handling code here:
-        InformationView infoV = new InformationView();
-        infoV.setVisible(true);
-        AdminController.setChoice(InformationSelection.ADMINDEL);
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.ADMINDEL);
         
     }//GEN-LAST:event_btnDelActionPerformed
 

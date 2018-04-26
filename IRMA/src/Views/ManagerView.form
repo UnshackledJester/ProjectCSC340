@@ -79,31 +79,49 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add New Customer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnModC">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modify Customer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDelC">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete Customer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAddE">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add New Employee"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddEActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnModE">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modify Employee"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModEActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDelE">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete Employee"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelEActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogout">
       <Properties>

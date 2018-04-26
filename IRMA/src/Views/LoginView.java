@@ -21,7 +21,9 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         lblError.setVisible(false);
+        
     }
+    
     
 
     /**
@@ -118,7 +120,15 @@ public class LoginView extends javax.swing.JFrame {
         String user = txtUsername.getText();
         String password = txtPassword.getText();
         try {
-            LoginController.UserInput(user,password);
+            boolean close = LoginController.UserInput(user,password);
+            if (close != false){
+                this.dispose();
+            }
+            else{
+                lblError.setText("Invalid username and password combination.");
+                lblError.setVisible(true);
+                
+            }
         } catch (Exception ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }

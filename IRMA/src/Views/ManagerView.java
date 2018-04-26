@@ -5,7 +5,9 @@
  */
 package Views;
 
+import Controllers.IRMAmainController;
 import Controllers.LoginController;
+import Interfaces.InformationSelection;
 
 /**
  *
@@ -41,16 +43,46 @@ public class ManagerView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAddC.setText("Add New Customer");
+        btnAddC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCActionPerformed(evt);
+            }
+        });
 
         btnModC.setText("Modify Customer");
+        btnModC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModCActionPerformed(evt);
+            }
+        });
 
         btnDelC.setText("Delete Customer");
+        btnDelC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelCActionPerformed(evt);
+            }
+        });
 
         btnAddE.setText("Add New Employee");
+        btnAddE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEActionPerformed(evt);
+            }
+        });
 
         btnModE.setText("Modify Employee");
+        btnModE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModEActionPerformed(evt);
+            }
+        });
 
         btnDelE.setText("Delete Employee");
+        btnDelE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelEActionPerformed(evt);
+            }
+        });
 
         btnLogout.setForeground(new java.awt.Color(204, 0, 0));
         btnLogout.setText("Log out");
@@ -116,6 +148,42 @@ public class ManagerView extends javax.swing.JFrame {
       logv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAddCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.MANAGERADDC);
+    }//GEN-LAST:event_btnAddCActionPerformed
+
+    private void btnModCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModCActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.MANAGERMODC);
+    }//GEN-LAST:event_btnModCActionPerformed
+
+    private void btnDelCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelCActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.MANAGERDELC);
+    }//GEN-LAST:event_btnDelCActionPerformed
+
+    private void btnAddEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.MANAGERADDE);
+    }//GEN-LAST:event_btnAddEActionPerformed
+
+    private void btnModEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModEActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.MANAGERMODE);
+    }//GEN-LAST:event_btnModEActionPerformed
+
+    private void btnDelEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelEActionPerformed
+        // TODO add your handling code here:
+        Controllers.IRMAmainController.MakeInfoView();
+        IRMAmainController.setChoice(InformationSelection.MANAGERDELE);
+    }//GEN-LAST:event_btnDelEActionPerformed
 
     /**
      * @param args the command line arguments

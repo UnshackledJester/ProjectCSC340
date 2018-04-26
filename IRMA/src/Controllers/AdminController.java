@@ -20,15 +20,7 @@ import java.util.Scanner;
  * @author Chronos
  */
 public class AdminController {
-        public static Interfaces.InformationSelection choice;
-
-        public static void setChoice(InformationSelection newChoice){
-            choice = newChoice;
-        }
-    public static InformationSelection getChoice(){
-    return choice;
-}
-
+        
     private AdminController() {
     }
 

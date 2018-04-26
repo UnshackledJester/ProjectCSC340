@@ -19,29 +19,30 @@ public class LoginController {
     public LoginController() {
     }
 
-    public static void UserInput(String user,String pass) throws IOException, Exception{
+    public static boolean UserInput(String user,String pass) throws IOException, Exception{
         LoginEnum validate = Models.Authentication.validateInput(pass, user);
         validate.loginVal();
     switch(validate){
         case  ADMIN:{
             AdminView adminV = new AdminView();
             adminV.setVisible(true);
-            break;
+            return true;
+            
         }
         case MANAGER:{
             ManagerView managerV = new ManagerView();
             managerV.setVisible(true);
+            return true;
             
-            break;
         }
         case EMPLOYEE:{
             EmployeeView employeeV = new EmployeeView();
             employeeV.setVisible(true);
-            break;
+            return true;
         }default:{
-            System.out.println("Error");
+            System.out.println("Error");    
+            return false;
         
-        break;
         }
     
 }
