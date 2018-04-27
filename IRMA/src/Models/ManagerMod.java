@@ -7,6 +7,7 @@ package Models;
  */
 //Imports.
 import Interfaces.DatabaseInterface;
+import Utility.Res;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,11 +23,11 @@ public class ManagerMod {
     public static boolean addManager(String _firstName, String _lastName, String _email, String _username, String _password) throws IOException, Exception {
         //Get array of current managers, and add one more index
         ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = _username;
+        String testUser = _username;
         //Boolean used for testing if ID already exists.
         boolean save = true;
         for (Manager manager : arr) {
-            if (manager.getUsername().contains(test)) {
+            if (manager.getUsername().contains(testUser)|| !(Res.hasLength(testUser)) || !(Res.hasUpperCase(testUser)) || !(Res.hasLowerCase(testUser))) {
                 save = false;
 
             }

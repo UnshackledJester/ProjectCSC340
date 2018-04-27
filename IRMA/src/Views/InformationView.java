@@ -61,6 +61,7 @@ public class InformationView extends javax.swing.JFrame {
             //Set boolean to true, indicating fields are populated.
             loadedFields = true;
             //Hide Error label.
+            btnEnter.setText("Save");
             lblError.setVisible(false);
 
         } catch (Exception ex) {
@@ -284,7 +285,7 @@ public class InformationView extends javax.swing.JFrame {
                         boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
                         if (!saved) {
                             //If not confirmed, make Error label match error and make visible.
-                            lblError.setText("User ID already exists.");
+                            lblError.setText("User ID already exists or invalid entry.");
                             lblError.setVisible(true);
                         }
                         //No information in fields, set error and make visible.
@@ -309,7 +310,7 @@ public class InformationView extends javax.swing.JFrame {
                                     txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
                             //If failed, show Error label and update Error label text/
-                            lblError.setText("User ID already exists.");
+                            lblError.setText("User ID already exists or invalid entry.");
                             lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -348,7 +349,7 @@ public class InformationView extends javax.swing.JFrame {
                         boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
                         if (!saved) {
                             //Failed to save, user already exists.
-                            lblError.setText("User ID already exists.");
+                            lblError.setText("User ID already exists or invalid entry.");
                             lblError.setVisible(true);
                         }
                     } else {
@@ -417,7 +418,7 @@ public class InformationView extends javax.swing.JFrame {
                         boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
                         if (!saved) {
                             //Error saving, user already exists.
-                            lblError.setText("User ID already exists.");
+                            lblError.setText("User ID already exists or invalid entry.");
                             lblError.setVisible(true);
 
                         }
@@ -442,7 +443,7 @@ public class InformationView extends javax.swing.JFrame {
                         CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                     } catch (Exception ex) {
                         //Error, user already exists.
-                        lblError.setText("User ID already exists.");
+                        lblError.setText("User ID already exists or invalid entry.");
                         lblError.setVisible(true);
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
