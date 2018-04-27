@@ -18,21 +18,21 @@ public class EmployeeMod {
     }
 
     //Method to add new employee account.
-    public static boolean addEmployee(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addEmployee(String _firstName, String _lastName, String _email, String _username, String _password) throws IOException, Exception {
         //Get array of current Employees, and add one more index
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
-        String test = username;
+        String testUser = _username;
 
         //Boolean to test if able to save.
         boolean save = true;
         for (Employee employee : arr) {
-            if (employee.getUsername().contains(test)) {
+            if (employee.getUsername().contains(testUser)) {
                 save = false;
             }
         }
         //If able to be saved, add new account to array and save to file.
         if (save) {
-            arr.add(new Employee(firstName, lastName, email, username, password));
+            arr.add(new Employee(_firstName, _lastName, _email, _username, _password));
             DatabaseInterface.saveEmployee(arr);
         }
         //Return boolean for error if unsaved.
@@ -40,11 +40,11 @@ public class EmployeeMod {
     }
 
     //Method for archiving employee account.
-    public static void removeEmployee(String username) throws IOException, Exception {
+    public static void removeEmployee(String _username) throws IOException, Exception {
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
-        String test = username;
+        String testUser = _username;
         for (Employee employee : arr) {
-            if (employee.getUsername().contains(test) && !employee.getArchived()) {
+            if (employee.getUsername().contains(testUser) && !employee.getArchived()) {
                 employee.setArchived(true);
                 DatabaseInterface.saveEmployee(arr);
             }
@@ -52,12 +52,12 @@ public class EmployeeMod {
     }
 
     //Method to find existing account by username.
-    public static Employee findEmployeeUser(String username) throws IOException, Exception {
+    public static Employee findEmployeeUser(String _username) throws IOException, Exception {
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
-        String test = username;
+        String testUser = _username;
         //If present, return employee object.
         for (Employee employee : arr) {
-            if (employee.getUsername().equals(test) && !employee.getArchived()) {
+            if (employee.getUsername().equals(testUser) && !employee.getArchived()) {
                 return employee;
             }
         }
@@ -66,12 +66,12 @@ public class EmployeeMod {
     }
 
     //Method for modifying existing employee account.
-    public static void modEmployee(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
-        Employee modEmployee = new Employee(firstName, lastName, email, username, password, _UUID);
-        String test = _UUID;
+    public static void modEmployee(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID) throws IOException, Exception {
+        Employee modEmployee = new Employee(_firstName, _lastName, _email, _username, _password, _UUID);
+        String testID = _UUID;
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         for (Employee employee : arr) {
-            if (employee.getID().contains(test)) {
+            if (employee.getID().contains(testID)) {
                 Collections.replaceAll(arr, employee, modEmployee);
                 DatabaseInterface.saveEmployee(arr);
             }

@@ -8,9 +8,9 @@ package Utility;
 public class Config {
 
     //Filler for use in design; to be worked on in the future, currently only sets text file names.
-    public static String getFileDatabase(String type) {
-        String fileType = type;
-        if (type.equals("Managers")) {
+    public static String getFileDatabase(String _type) {
+        String fileType = _type;
+        if (_type.equals("Managers")) {
             return "managers.txt";
         } else {
             return "employees.txt";

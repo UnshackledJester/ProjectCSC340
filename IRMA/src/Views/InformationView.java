@@ -75,8 +75,8 @@ public class InformationView extends javax.swing.JFrame {
         try {
             //Try catch: Send string from text field to customer account lookup
             //Populate fiellds with results
-            String user = txtUser.getText();
-            Manager manager = ManagerMod.findManagerUser(user);
+            String _user = txtUser.getText();
+            Manager manager = ManagerMod.findManagerUser(_user);
             //Set fields
             txtUser.setText(manager.getUsername());
             txtPass.setText(manager.getPassword());
@@ -104,8 +104,8 @@ public class InformationView extends javax.swing.JFrame {
         try {
             //Try catch: Send string from text field to employee account lookup
             //Populate fiellds with results
-            String user = txtUser.getText();
-            Employee employee = EmployeeMod.findEmployeeUser(user);
+            String _user = txtUser.getText();
+            Employee employee = EmployeeMod.findEmployeeUser(_user);
             //Set fields.
             txtUser.setText(employee.getUsername());
             txtPass.setText(employee.getPassword());
@@ -270,196 +270,207 @@ public class InformationView extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
 
-        // TODO add your handling code here:
-        InformationSelection choice = IRMAmainController.getChoice();
+        //Get enumeration from main controller
+        InformationSelection _choice = IRMAmainController.getChoice();
 
-        switch (choice) {
-            case ADMINADD:
-                System.out.println("Worked Admin add");
-                 {
-                    try {
-                        if (hasInfo()) {
-                            boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                            if (!saved) {
-
-                                lblError.setText("User ID already exists.");
-                                lblError.setVisible(true);
-                            }
-                        } else {
-                            lblError.setText("User information missing:");
+        //Switch case controls which methods are accessed by the enumeration returned.
+        switch (_choice) {
+            //Admin account adding a new manager
+            case ADMINADD: {
+                try {
+                    //Check for fields having information.
+                    if (hasInfo()) {
+                        //Send text fields to manager mod and return confirmation.
+                        boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                        if (!saved) {
+                            //If not confirmed, make Error label match error and make visible.
+                            lblError.setText("User ID already exists.");
                             lblError.setVisible(true);
                         }
-
-                    } catch (Exception ex) {
-                        Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+                        //No information in fields, set error and make visible.
+                    } else {
+                        lblError.setText("User information missing:");
+                        lblError.setVisible(true);
                     }
+
+                } catch (Exception ex) {
+                    Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                break;
-
+            }
+            break;
+            //Admin account modifying a manager account.
             case ADMINMOD:
-                System.out.println("Worked Admin mod");
+                //If fields have been loaded, proceed with modifying the account.
                 if (loadedFields) {
-
                     {
                         try {
-                            System.out.println("inside save loop");
+                            //Send text fields to module for saving.
                             ManagerMod.modManager(txtFirst.getText(), txtLast.getText(),
                                     txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
+                            //If failed, show Error label and update Error label text/
                             lblError.setText("User ID already exists.");
                             lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 } else {
-                    System.out.println("right before setfields");
+                    //If fields have not been set, set fields.
                     managerSetFields();
                 }
                 break;
-
+            //Admiun account archiving a manager account.
             case ADMINDEL:
-                System.out.println("Worked Admin del");
+                //If fields have been loaded, proceed.
                 if (loadedFields) {
                     {
                         try {
+                            //Send user name of account to be archived.
                             ManagerMod.removeManager(txtUser.getText());
                         } catch (Exception ex) {
+                            //Error handeling, user name not found.
                             lblError.setText("No such user.");
                             lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 } else {
+                    //If fields are not set, set fields.
                     managerSetFields();
                 }
                 break;
 
-            case MANAGERADDE:
-                System.out.println("Worked managerAddE");
-                 {
-                    try {
-                        if (hasInfo()) {
-                            boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                            if (!saved) {
-                                lblError.setText("User ID already exists.");
-                                lblError.setVisible(true);
-                            }
-                        } else {
-                            lblError.setText("User information missing:");
+            //Manager account adding an employee account.
+            case MANAGERADDE: {
+                try {
+                    //If fields are not empty, try to save account.
+                    if (hasInfo()) {
+                        boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                        if (!saved) {
+                            //Failed to save, user already exists.
+                            lblError.setText("User ID already exists.");
                             lblError.setVisible(true);
                         }
-
-                    } catch (Exception ex) {
-                        Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+                    } else {
+                        //Fields are not all set, set Error to visible and update text.
+                        lblError.setText("User information missing:");
+                        lblError.setVisible(true);
                     }
-                }
-                break;
 
+                } catch (Exception ex) {
+                    Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+
+            //Manager account modifying employee account.
             case MANAGERMODE:
-                System.out.println("Worked manager modE");
+                //If the fields have been loaded proceed.
                 if (loadedFields) {
                     {
                         try {
+                            //Send field information to method to modify employee accounts.
                             EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
 
                         } catch (Exception ex) {
-
-                            lblError.setText("User ID already exists.");
+                            //Returned error, user does not exists.
+                            lblError.setText("User ID does not exists.");
                             lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 } else {
+                    //If fields are not loaded, load fields.
                     employeeSetFields();
 
                 }
                 break;
 
+            //Manager archiving an employee account.
             case MANAGERDELE:
-                System.out.println("Worked manager delE");
+                //If fields are loaded proceed.
                 if (loadedFields) {
                     {
                         try {
+                            //Sent user information to method for archiving accounts.
                             EmployeeMod.removeEmployee(txtUser.getText());
                         } catch (Exception ex) {
+                            //Error returned, user does not exist.
                             lblError.setText("User ID does not exist.");
                             lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 } else {
+                    //If fields are not set, set fields.
                     employeeSetFields();
                 }
                 break;
 
+            //Method for both manager and employee adding a new customer account.
             case MANAGERADDC:
-                System.out.println("Worked manager addC");
-            case EMPLOYEEADD:
-                System.out.println("Worked Employee add");
-                 {
-                    try {
-                        if (hasInfo()) {
-                            boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                            if (!saved) {
-                                lblError.setText("User ID already exists.");
-                                lblError.setVisible(true);
-
-                            }
-                        } else {
-                            lblError.setText("User information missing:");
+            case EMPLOYEEADD: {
+                try {
+                    //Check to see if the fields are not empty.
+                    if (hasInfo()) {
+                        //Send fields to method to add a new customer account.
+                        boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                        if (!saved) {
+                            //Error saving, user already exists.
+                            lblError.setText("User ID already exists.");
                             lblError.setVisible(true);
-                        }
-                    } catch (Exception ex) {
-                        Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                break;
 
+                        }
+                    } else {
+                        //Fields were empty, error message.
+                        lblError.setText("User information missing:");
+                        lblError.setVisible(true);
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+
+            //Manager and Employee accounts modifying customer account.
             case MANAGERMODC:
-                System.out.println("Worked manager modC");
             case EMPLOYEEMOD:
-                System.out.println("Worked, employee mod");
-                System.out.println("Worked Admin mod");
+                //If the fields are loaded, proceed.
                 if (loadedFields) {
                     try {
+                        //Send field information to method to modify customer account.
                         CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                     } catch (Exception ex) {
-
+                        //Error, user already exists.
                         lblError.setText("User ID already exists.");
                         lblError.setVisible(true);
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    //If fields are not loaded, load fields.
                 } else {
-
                     customerSetfields();
-
                 }
                 break;
 
+            //Manager and employee accounts archiving customer account.
             case MANAGERDELC:
-                System.out.println("Worked managerDelC");
             case EMPLOYEEDEL:
-                System.out.println("Worked, employee del");
+                //If fields are loaded, proceed.
                 if (loadedFields) {
-                    {
-                        try {
-                            CustomerMod.removeCustomer(txtUser.getText());
-                        } catch (Exception ex) {
-                            lblError.setText("User ID does not exist.");
-                            lblError.setVisible(true);
-                            Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                    try {
+                        //Send field information to method to archive account.
+                        CustomerMod.removeCustomer(txtUser.getText());
+                    } catch (Exception ex) {
+                        //Error returned, user does not exist.
+                        lblError.setText("User ID does not exist.");
+                        lblError.setVisible(true);
+                        Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
+                    //If fields are not loaded, load fields.
                     customerSetfields();
-
                 }
                 break;
-            default:
-                System.out.println("Error");
-                break;
-
         }
     }//GEN-LAST:event_btnEnterActionPerformed
 

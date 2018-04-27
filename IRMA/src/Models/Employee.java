@@ -20,22 +20,22 @@ public class Employee implements Serializable {
     private boolean Archived;
 
     //Constructor for new employee.
-    public Employee(String firstName, String lastName, String email, String username, String password) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public Employee(String _firstName, String _lastName, String _email, String _username, String _password) {
+        this.firstname = _firstName;
+        this.lastname = _lastName;
+        this.email = _email;
+        this.username = _username;
+        this.password = _password;
         this.Archived = false;
     }
 
     //Constructor for existing employee.
-    public Employee(String firstName, String lastName, String email, String username, String password, String _UUID) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public Employee(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID) {
+        this.firstname = _firstName;
+        this.lastname = _lastName;
+        this.email = _email;
+        this.username = _username;
+        this.password = _password;
         this.Archived = false;
         this.UUID = _UUID;
     }
@@ -51,8 +51,8 @@ public class Employee implements Serializable {
         return Archived;
     }
 
-    public void setArchived(boolean Archived) {
-        this.Archived = Archived;
+    public void setArchived(boolean _Archived) {
+        this.Archived = _Archived;
     }
 
     public String getID() {
@@ -67,40 +67,40 @@ public class Employee implements Serializable {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstname(String _firstname) {
+        this.firstname = _firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname(String _lastname) {
+        this.lastname = _lastname;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String _email) {
+        this.email = _email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String _password) {
+        this.password = _password;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String _username) {
+        this.username = _username;
     }
 
 }

@@ -6,7 +6,6 @@ package Views;
 */
 //Imports.
 import Controllers.IRMAmainController;
-import Controllers.LoginController;
 import Interfaces.InformationSelection;
 
 //Public class for manager view.

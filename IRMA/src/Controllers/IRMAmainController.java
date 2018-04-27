@@ -28,8 +28,8 @@ public class IRMAmainController {
     }
 
     //Setter for information view status.
-    public static void setWindowStatus(boolean status) {
-        infoWindowOpen = status;
+    public static void setWindowStatus(boolean _status) {
+        infoWindowOpen = _status;
     }
 
     //Method for opening new information view.

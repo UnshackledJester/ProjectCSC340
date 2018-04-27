@@ -22,22 +22,22 @@ public class Customer implements Serializable {
     private boolean Archived;
 
     //Constructor for saving new accounts.
-    public Customer(String firstName, String lastName, String email, String username, String password) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public Customer(String _firstName, String _lastName, String _email, String _username, String _password) {
+        this.firstname = _firstName;
+        this.lastname = _lastName;
+        this.email = _email;
+        this.username = _username;
+        this.password = _password;
         this.Archived = false;
     }
 
     //Second constructor for saving existing accounts.
-    public Customer(String firstName, String lastName, String email, String username, String password, String _UUID) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public Customer(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID) {
+        this.firstname = _firstName;
+        this.lastname = _lastName;
+        this.email = _email;
+        this.username = _username;
+        this.password = _password;
         this.Archived = false;
         this.UUID = _UUID;
     }
@@ -55,12 +55,12 @@ public class Customer implements Serializable {
         return Archived;
     }
 
-    public void setArchived(boolean Archived) {
-        this.Archived = Archived;
+    public void setArchived(boolean _Archived) {
+        this.Archived = _Archived;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String _username) {
+        this.username = _username;
     }
 
     public String getUsername() {
@@ -71,32 +71,32 @@ public class Customer implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String _password) {
+        this.password = _password;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String _email) {
+        this.email = _email;
     }
 
     public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstname(String _firstname) {
+        this.firstname = _firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname(String _lastname) {
+        this.lastname = _lastname;
     }
     
     

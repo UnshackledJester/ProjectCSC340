@@ -19,22 +19,21 @@ public class CustomerMod {
     }
 
     //Method to add a new customer account.
-    public static boolean addCustomer(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addCustomer(String _firstName, String _lastName, String _email, String _username, String _password) throws IOException, Exception {
         //Get array of current Customers, and add one more index
         ArrayList<Customer> arr = ServerInterface.getCustomer();
-        String test = username;
+        String testUser = _username;
 
         //Boolean to check for existing ID's and saving errors.
         boolean save = true;
         for (Customer customer : arr) {
-            if (customer.getUsername().contains(test)) {
-                System.out.println(" ID already exist");
+            if (customer.getUsername().contains(testUser)) {
                 save = false;
             }
         }
         //If no such ID exists, save new customer.
         if (save) {
-            arr.add(new Customer(firstName, lastName, email, username, password));
+            arr.add(new Customer(_firstName, _lastName, _email, _username, _password));
             ServerInterface.saveCustomer(arr);
         }
         //Return boolean to show if saved.
@@ -42,12 +41,11 @@ public class CustomerMod {
     }
 
     //Method to archive customer account.
-    public static void removeCustomer(String username) throws IOException, Exception {
+    public static void removeCustomer(String _username) throws IOException, Exception {
         ArrayList<Customer> arr = ServerInterface.getCustomer();
-        String test = username;
-        System.out.println(test);
+        String testUser = _username;
         for (Customer Customer : arr) {
-            if (Customer.getUsername().contains(test)) {
+            if (Customer.getUsername().contains(testUser)) {
                 Customer.setArchived(true);
                 ServerInterface.saveCustomer(arr);
             }
@@ -57,11 +55,11 @@ public class CustomerMod {
     }
 
     //Method to find existing customer account.
-    public static Customer findCustomerUser(String username) throws IOException, Exception {
+    public static Customer findCustomerUser(String _username) throws IOException, Exception {
         ArrayList<Customer> arr = ServerInterface.getCustomer();
-        String test = username;
+        String testUser = _username;
         for (Customer customer : arr) {
-            if (customer.getUsername().equals(test) && !customer.getArchived()) {
+            if (customer.getUsername().equals(testUser) && !customer.getArchived()) {
                 //Returns customer object if found.
                 return customer;
             }
@@ -72,13 +70,13 @@ public class CustomerMod {
     }
 
     //Method to modify existing customer account.
-    public static void modCustomer(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
-        Customer modCustomer = new Customer(firstName, lastName, email, username, password, _UUID);
-        String test = _UUID;
+    public static void modCustomer(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID) throws IOException, Exception {
+        Customer modCustomer = new Customer(_firstName, _lastName, _email, _username, _password, _UUID);
+        String testID = _UUID;
         //Tests based on UUID
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         for (Customer customer : arr) {
-            if (customer.getID().contains(test)) {
+            if (customer.getID().contains(testID)) {
                 Collections.replaceAll(arr, customer, modCustomer);
                 ServerInterface.saveCustomer(arr);
             }

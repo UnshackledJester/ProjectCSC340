@@ -13,8 +13,8 @@ public enum LoginEnum {
     private final int loginValue;
     
     //Constructor to hold enumeration.
-    private LoginEnum(int loginValue){
-        this.loginValue = loginValue;
+    private LoginEnum(int _loginValue){
+        this.loginValue = _loginValue;
     }
     
     //Getter for enumeration value.

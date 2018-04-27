@@ -7,11 +7,9 @@ package Models;
  */
 //Imports.
 import Interfaces.DatabaseInterface;
-import static Interfaces.DatabaseInterface.loadManager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 //Public class for manager mod.
 public class ManagerMod {
@@ -21,10 +19,10 @@ public class ManagerMod {
     }
 
     //Method to add a new manager account.
-    public static boolean addManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addManager(String _firstName, String _lastName, String _email, String _username, String _password) throws IOException, Exception {
         //Get array of current managers, and add one more index
         ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = username;
+        String test = _username;
         //Boolean used for testing if ID already exists.
         boolean save = true;
         for (Manager manager : arr) {
@@ -35,7 +33,7 @@ public class ManagerMod {
         }
         //If id doesn't exist, make a new manager account, add it to the manager array, and save it to file.
         if (save) {
-            Manager manager = new Manager(firstName, lastName, email, username, password);
+            Manager manager = new Manager(_firstName, _lastName, _email, _username, _password);
             manager.setID();
             arr.add(manager);
             DatabaseInterface.saveManager(arr);
@@ -45,12 +43,11 @@ public class ManagerMod {
     }
 
     //Method to archive existing manager accounts.
-    public static void removeManager(String username) throws IOException, Exception {
+    public static void removeManager(String _username) throws IOException, Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = username;
-        System.out.println(test);
+        String testUser = _username;
         for (Manager manager : arr) {
-            if (manager.getUsername().contains(test)) {
+            if (manager.getUsername().contains(testUser)) {
                 manager.setArchived(true);
                 DatabaseInterface.saveManager(arr);
             }
@@ -58,11 +55,11 @@ public class ManagerMod {
     }
 
     //Method to find existing manager accounts.
-    public static Manager findManagerUser(String username) throws IOException, Exception {
+    public static Manager findManagerUser(String _username) throws IOException, Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
-        String test = username;
+        String testUser = _username;
         for (Manager manager : arr) {
-            if (manager.getUsername().equals(test) && !manager.getArchived()) {
+            if (manager.getUsername().equals(testUser) && !manager.getArchived()) {
                 return manager;
             }
         }
@@ -71,12 +68,12 @@ public class ManagerMod {
     }
 
     //Method to modify existin manager accounts.
-    public static void modManager(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
-        Manager modManager = new Manager(firstName, lastName, email, username, password, _UUID);
-        String test = _UUID;
+    public static void modManager(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID) throws IOException, Exception {
+        Manager modManager = new Manager(_firstName, _lastName, _email, _username, _password, _UUID);
+        String testUser = _UUID;
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
-            if (manager.getID().contains(test)) {
+            if (manager.getID().contains(testUser)) {
                 Collections.replaceAll(arr, manager, modManager);
                 DatabaseInterface.saveManager(arr);
             }

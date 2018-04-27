@@ -15,8 +15,8 @@ public enum InformationSelection {
     private final int choiceValue;
     
     //Constructor to set enumeration.
-    private InformationSelection(int loginValue){
-        this.choiceValue = loginValue;
+    private InformationSelection(int _loginValue){
+        this.choiceValue = _loginValue;
     }
     
     //Getter for enumeration.

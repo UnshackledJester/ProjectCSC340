@@ -106,12 +106,12 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         //When enter button is pressed, get text from fields and test for login. 
-        String user = txtUsername.getText();
-        String password = txtPassword.getText();
+        String _user = txtUsername.getText();
+        String _password = txtPassword.getText();
         try {
             //Boolean method with information sent to controller, confirmation of
             //new window disposes current login.
-            boolean close = LoginController.UserInput(user, password);
+            boolean close = LoginController.UserInput(_user, _password);
             if (close != false) {
                 this.dispose();
             } else {

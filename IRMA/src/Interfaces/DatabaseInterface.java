@@ -53,8 +53,6 @@ public class DatabaseInterface {
     public static ArrayList<Manager> getManager() throws Exception {
         ArrayList<Manager> Manager = loadManager();
         for (Manager p : Manager) {
-            System.out.println(p);
-            System.out.println("LOADED MANAGERS");
         }
         return Manager;
     }
@@ -64,7 +62,6 @@ public class DatabaseInterface {
         ArrayList<Employee> Employee = loadEmployee();
 
         for (Employee p : Employee) {
-            System.out.println(p);
         }
         return Employee;
     }

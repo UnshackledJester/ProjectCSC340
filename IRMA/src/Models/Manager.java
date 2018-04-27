@@ -10,14 +10,14 @@ import java.io.Serializable;
 public class Manager extends Employee implements Serializable  {
 
     //constructor for new manager account
-    public Manager(String firstName, String lastName, String email, String username, String password) {
+    public Manager(String _firstName, String _lastName, String _email, String _username, String _password) {
         //Super use of extention class
-        super(firstName, lastName, email, username, password);
+        super(_firstName, _lastName, _email, _username, _password);
     }
     
     //Constructor for existing manager account.
-    public Manager(String firstName, String lastName, String email, String username, String password, String _UUID){
-        super(firstName,lastName,email,username,password,_UUID);
+    public Manager(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID){
+        super(_firstName,_lastName,_email,_username,_password,_UUID);
     }
 
 
