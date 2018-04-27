@@ -62,18 +62,19 @@ public class InformationView extends javax.swing.JFrame {
         try {
             String user = txtUser.getText();
             Customer customer = CustomerMod.findCustomerUser(user);
-            if (customer != null) {
-                txtUser.setText(customer.getUsername());
-                txtPass.setText(customer.getPassword());
-                txtEmail.setText(customer.getEmail());
-                txtFirst.setText(customer.getFirstname());
-                txtLast.setText(customer.getLastname());
-                loadedFields = true;
-            }else{
-                lblError.setText("No such user ID exists:");
-                lblError.setVisible(true);
-            }
+
+            txtUser.setText(customer.getUsername());
+            txtPass.setText(customer.getPassword());
+            txtEmail.setText(customer.getEmail());
+            txtFirst.setText(customer.getFirstname());
+            txtLast.setText(customer.getLastname());
+            lblUUID.setText(customer.getID());
+
+            loadedFields = true;
+
         } catch (Exception ex) {
+            lblError.setVisible(true);
+            lblError.setText("No such user ID exists:");
             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -86,21 +87,17 @@ public class InformationView extends javax.swing.JFrame {
             Manager manager = ManagerMod.findManagerUser(user);
             System.out.println("Alpha");
             System.out.println(manager.getUsername());
-            if (manager != null) {
-                System.out.println("Setting fields");
-                txtUser.setText(manager.getUsername());
-                txtPass.setText(manager.getPassword());
-                txtEmail.setText(manager.getEmail());
-                txtFirst.setText(manager.getFirstname());
-                txtLast.setText(manager.getLastname());
-                lblUUID.setText(manager.getID());
-                loadedFields = true;
-            }else{
-                    lblError.setVisible(true);
-            
-                lblError.setText("No such user ID exists:");
-            }
+            txtUser.setText(manager.getUsername());
+            txtPass.setText(manager.getPassword());
+            txtEmail.setText(manager.getEmail());
+            txtFirst.setText(manager.getFirstname());
+            txtLast.setText(manager.getLastname());
+            lblUUID.setText(manager.getID());
+            loadedFields = true;
+
         } catch (Exception ex) {
+            lblError.setVisible(true);
+            lblError.setText("No such user ID exists:");
             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -110,19 +107,18 @@ public class InformationView extends javax.swing.JFrame {
             String user = txtUser.getText();
 
             Employee employee = EmployeeMod.findEmployeeUser(user);
-            if (employee != null) {
-                txtUser.setText(employee.getUsername());
-                txtPass.setText(employee.getPassword());
-                txtEmail.setText(employee.getEmail());
-                txtFirst.setText(employee.getFirstname());
-                txtLast.setText(employee.getLastname());
-                loadedFields = true;
-            }else{
-                    lblError.setVisible(true);
-            
-                lblError.setText("No such user ID exists:");
-            }
+
+            txtUser.setText(employee.getUsername());
+            txtPass.setText(employee.getPassword());
+            txtEmail.setText(employee.getEmail());
+            txtFirst.setText(employee.getFirstname());
+            txtLast.setText(employee.getLastname());
+            loadedFields = true;
+            lblUUID.setText(employee.getID());
+
         } catch (Exception ex) {
+            lblError.setVisible(true);
+            lblError.setText("No such user ID exists:");
             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -282,10 +278,10 @@ public class InformationView extends javax.swing.JFrame {
                  {
                     try {
                         if (hasInfo()) {
-                            boolean saved =ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                        if(!saved){
-                            lblError.setText("User ID already exists.");
-                        }
+                            boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            if (!saved) {
+                                lblError.setText("User ID already exists.");
+                            }
                         }
                     } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
@@ -331,10 +327,10 @@ public class InformationView extends javax.swing.JFrame {
                  {
                     try {
                         boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                    if(!saved){
+                        if (!saved) {
                             lblError.setText("User ID already exists.");
                         }
-                    
+
                     } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -381,10 +377,10 @@ public class InformationView extends javax.swing.JFrame {
                  {
                     try {
                         if (hasInfo()) {
-                           boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                        if(!saved){
-                            lblError.setText("User ID already exists.");
-                        }
+                            boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            if (!saved) {
+                                lblError.setText("User ID already exists.");
+                            }
                         }
                     } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
@@ -439,6 +435,7 @@ public class InformationView extends javax.swing.JFrame {
         // TODO add your handling code here:
         clearFields();
         loadedFields = false;
+        lblError.setVisible(loadedFields);
     }//GEN-LAST:event_btnClearActionPerformed
 
     /**

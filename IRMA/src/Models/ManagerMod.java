@@ -75,7 +75,7 @@ public class ManagerMod {
     }
 
     public static void modManager(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
-        Manager modManager = new Manager(firstName, lastName, email, username, password);
+        Manager modManager = new Manager(firstName, lastName, email, username, password, _UUID);
         String test = _UUID;
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
