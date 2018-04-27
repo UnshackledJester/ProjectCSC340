@@ -1,23 +1,24 @@
 package Interfaces;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Enumeration for login selection
+    Last updated 4/26/2018
  */
 
-
-/**
- *
- * @author Chronos
- */
+//Public enumeration
 public enum LoginEnum {
+    //Enumerations
     ADMIN(1),MANAGER(2),EMPLOYEE(3),NOMATCH(0);
+    //Private integer to hold the value;
     private final int loginValue;
+    
+    //Constructor to hold enumeration.
     private LoginEnum(int loginValue){
         this.loginValue = loginValue;
     }
-    public int loginVal(){
+    
+    //Getter for enumeration value.
+    public int getLoginVal(){
         return loginValue;
     }
 

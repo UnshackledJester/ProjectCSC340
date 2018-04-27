@@ -1,9 +1,17 @@
 package Models;
 
+/*
+    Model for customer accounts.
+    Last updated 4/26/2018.
+ */
+
+//Imports.
 import Utility.UUIdentifier;
 import java.io.Serializable;
 
-public class Customer implements Serializable  {
+//Public class for employee.
+public class Customer implements Serializable {
+
     //Variables for Customers
     private String UUID;
     private String firstname;
@@ -12,7 +20,8 @@ public class Customer implements Serializable  {
     private String password;
     private String username;
     private boolean Archived;
-    //Constructor
+
+    //Constructor for saving new accounts.
     public Customer(String firstName, String lastName, String email, String username, String password) {
         this.firstname = firstName;
         this.lastname = lastName;
@@ -21,6 +30,8 @@ public class Customer implements Serializable  {
         this.password = password;
         this.Archived = false;
     }
+
+    //Second constructor for saving existing accounts.
     public Customer(String firstName, String lastName, String email, String username, String password, String _UUID) {
         this.firstname = firstName;
         this.lastname = lastName;
@@ -30,15 +41,17 @@ public class Customer implements Serializable  {
         this.Archived = false;
         this.UUID = _UUID;
     }
-     public String getID() {
+
+    //Getters and setters.
+    public String getID() {
         return UUID;
     }
 
-    public void setID(){
-        this.UUID =UUIdentifier.getUUID();;
+    public void setID() {
+        this.UUID = UUIdentifier.getUUID();;
     }
 
-    public boolean isArchived() {
+    public boolean getArchived() {
         return Archived;
     }
 
@@ -46,7 +59,6 @@ public class Customer implements Serializable  {
         this.Archived = Archived;
     }
 
-  //Getters and setters
     public void setUsername(String username) {
         this.username = username;
     }
@@ -54,12 +66,15 @@ public class Customer implements Serializable  {
     public String getUsername() {
         return username;
     }
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
-    public void setPassword(String password){
-        this.password = password;    
+
+    public void setPassword(String password) {
+        this.password = password;
     }
+
     public String getEmail() {
         return email;
     }
@@ -67,7 +82,6 @@ public class Customer implements Serializable  {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getFirstname() {
         return firstname;
@@ -84,10 +98,12 @@ public class Customer implements Serializable  {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+    
+    
 //To String override for testing purposes
     @Override
     public String toString() {
-        return (this.UUID + "," +this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password);
+        return (this.UUID + "," + this.firstname + "," + this.lastname + "," + this.email + "," + this.username + "," + this.password);
     }
 
 }

@@ -4,6 +4,7 @@ package Controllers;
     Controller for login view.
     Last updated 4/26/2018
  */
+
 //Import views, enumuerations, and I/O handeling.
 import Interfaces.LoginEnum;
 import Views.AdminView;
@@ -53,6 +54,7 @@ public class LoginController {
 
         }
     }
+    
     //Method to generate new login view.
     public static void MakeLogin() {
         //Creates new login view.

@@ -1,7 +1,13 @@
 package Models;
+/*
+    Model for Admin.
+    Last updated 4/26/2018.
+*/
 
+//Imports
 import java.io.Serializable;
 
+//Public class for admin.
 public class Admin implements Serializable {
 
     //Variables
