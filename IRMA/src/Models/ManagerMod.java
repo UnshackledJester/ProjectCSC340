@@ -49,7 +49,7 @@ public class ManagerMod {
         }return save;
     }
 
-    public static Manager removeManager(String username) throws IOException, Exception {
+    public static void removeManager(String username) throws IOException, Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         String test = username;
         System.out.println(test);
@@ -59,7 +59,7 @@ public class ManagerMod {
                 DatabaseInterface.saveManager(arr);
             }
         }
-        return null;
+        
     }
 
     public static Manager findManagerUser(String username) throws IOException, Exception {

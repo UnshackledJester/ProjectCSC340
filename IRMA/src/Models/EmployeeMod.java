@@ -43,7 +43,7 @@ public class EmployeeMod {
         return save;
     }
 
-    public static Employee removeEmployee(String username) throws IOException, Exception {
+    public static void removeEmployee(String username) throws IOException, Exception {
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         String test = username;
         System.out.println(test);
@@ -54,7 +54,7 @@ public class EmployeeMod {
             }
 
         }
-        return null;
+        
     }
 
     public static Employee findEmployeeUser(String username) throws IOException, Exception {

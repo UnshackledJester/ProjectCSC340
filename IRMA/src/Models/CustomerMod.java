@@ -43,7 +43,7 @@ public class CustomerMod {
         return save;
     }
 
-    public static Customer removeCustomer(String username) throws IOException, Exception {
+    public static void removeCustomer(String username) throws IOException, Exception {
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         String test = username;
         System.out.println(test);
@@ -54,7 +54,7 @@ public class CustomerMod {
             }
 
         }
-        return null;
+      
     }
 
     public static Customer findCustomerUser(String username) throws IOException, Exception {

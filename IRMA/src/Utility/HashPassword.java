@@ -33,4 +33,12 @@ public class HashPassword {
         }
         return NormalPassword;
     }
+    public static class String Hashed(String hashed){
+        HashPassword HP = new HashPassword();
+        String str = hashed;
+        String str1 = HP.encryption(str);
+        return str1;
+        
+        
+    }
 }
