@@ -69,7 +69,7 @@ public class InformationView extends javax.swing.JFrame {
             txtFirst.setText(customer.getFirstname());
             txtLast.setText(customer.getLastname());
             lblUUID.setText(customer.getID());
-
+            btnEnter.setText("Save");
             loadedFields = true;
 
         } catch (Exception ex) {
@@ -94,6 +94,7 @@ public class InformationView extends javax.swing.JFrame {
             txtLast.setText(manager.getLastname());
             lblUUID.setText(manager.getID());
             loadedFields = true;
+            btnEnter.setText("Save");
 
         } catch (Exception ex) {
             lblError.setVisible(true);
@@ -115,6 +116,7 @@ public class InformationView extends javax.swing.JFrame {
             txtLast.setText(employee.getLastname());
             loadedFields = true;
             lblUUID.setText(employee.getID());
+            btnEnter.setText("Save");
 
         } catch (Exception ex) {
             lblError.setVisible(true);
@@ -175,7 +177,7 @@ public class InformationView extends javax.swing.JFrame {
         });
 
         btnCancel.setForeground(new java.awt.Color(255, 0, 0));
-        btnCancel.setText("Cancel");
+        btnCancel.setText("Close");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -297,6 +299,7 @@ public class InformationView extends javax.swing.JFrame {
             case ADMINMOD:
                 System.out.println("Worked Admin mod");
                 if (loadedFields) {
+                    
                     {
                         try {
                             System.out.println("inside save loop");
@@ -353,6 +356,7 @@ public class InformationView extends javax.swing.JFrame {
             case MANAGERMODE:
                 System.out.println("Worked manager modE");
                 if (loadedFields) {
+                    btnEnter.setText("Save");
                     {
                         try {
                             if (hasInfo()) {
@@ -412,11 +416,12 @@ public class InformationView extends javax.swing.JFrame {
 
             case MANAGERMODC:
                 System.out.println("Worked manager modC");
-            case EMPLOYEEMOD:
+            case EMPLOYEEMOD:{
                 System.out.println("Worked, employee mod");
+                System.out.println("Worked Admin mod");
                 if (loadedFields) {
-                    {
-                        try {
+                    btnEnter.setText("Save");
+                    try {
                             CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
 
@@ -424,12 +429,12 @@ public class InformationView extends javax.swing.JFrame {
                             lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    }
+                    
                 } else {
 
                     customerSetfields();
 
-                }
+                }}
                 break;
 
             case MANAGERDELC:
