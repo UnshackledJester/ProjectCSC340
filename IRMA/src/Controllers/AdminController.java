@@ -1,36 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
-import Interfaces.DatabaseInterface;
-import static Interfaces.DatabaseInterface.loadManager;
-import Interfaces.InformationSelection;
-import Models.Manager;
-import Views.AdminView;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-
-/**
- *
- * @author Chronos
+/*
+    Controller for the admin view.
+    Last updated 4/26/2018
  */
+//Import the admin view.
+import Views.AdminView;
+
+//Public class for controller.
 public class AdminController {
-        
+
+//Stubbed constructor.
     private AdminController() {
     }
 
-    //Generate Admin HUI
+    //Generate Admin GUI.
     public static void MakeAdminGUI() {
+        //Declare new view.
         AdminView adminV = new AdminView();
+        //Make new view visible.
         adminV.setVisible(true);
 
     }
 
-    }
-
-
+}

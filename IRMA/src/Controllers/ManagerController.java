@@ -1,25 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
+/*
+    Controller for the manager view.
+    Last updated 4/26/2018
+*/
 
+//Import the manager view.
 import Views.ManagerView;
 
-/**
- *
- * @author Chronos
- */
+//Public class for controller.
 public class ManagerController {
     
-
+//Stubbed constructor.
     public ManagerController() {
     }
 
     //Generate Manager GUI
     public static void MakeManagerGUI() {
+        //Declare new view.
         ManagerView manV = new ManagerView();
+        //Make new view visible. 
         manV.setVisible(true);
 
     }

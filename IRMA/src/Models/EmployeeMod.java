@@ -6,9 +6,6 @@
 package Models;
 
 import Interfaces.DatabaseInterface;
-import static Interfaces.DatabaseInterface.loadEmployee;
-import Models.Employee;
-import Views.AdminView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,12 +15,12 @@ import java.util.Scanner;
  *
  * @author Chronos
  */
-public class EmployeeMod{
+public class EmployeeMod {
 
     private EmployeeMod() {
     }
 
-    public static boolean addEmployee( String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addEmployee(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current Employees, and add one more index
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         String test = username;
@@ -51,17 +48,14 @@ public class EmployeeMod{
         String test = username;
         System.out.println(test);
         for (Employee employee : arr) {
-            if (employee.getUsername().contains(test)&& !employee.isArchived()) {
+            if (employee.getUsername().contains(test) && !employee.isArchived()) {
                 employee.setArchived(true);
                 DatabaseInterface.saveEmployee(arr);
             }
-            
 
         }
         return null;
     }
-
-   
 
     public static Employee findEmployeeUser(String username) throws IOException, Exception {
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
@@ -69,7 +63,7 @@ public class EmployeeMod{
         System.out.println(test);
         System.out.println("proof");
         for (Employee employee : arr) {
-            if (employee.getUsername().equals(test)&& !employee.isArchived()) {
+            if (employee.getUsername().equals(test) && !employee.isArchived()) {
                 System.out.println("ARCHIVED BITCH");
                 return employee;
             }
@@ -100,7 +94,7 @@ public class EmployeeMod{
 
         switch (i) {
             case 1:
-                
+
                 Scanner firstname = new Scanner(System.in);
                 String fname1 = firstname.nextLine();
                 Scanner lastname = new Scanner(System.in);
@@ -111,14 +105,14 @@ public class EmployeeMod{
                 String user1 = username.nextLine();
                 Scanner password = new Scanner(System.in);
                 String pass1 = password.nextLine();
-                addEmployee( fname1, lname1, email1, user1, pass1);
-                ArrayList<Employee> Employee1 = loadEmployee();
+                addEmployee(fname1, lname1, email1, user1, pass1);
+                ArrayList<Employee> Employee1 = DatabaseInterface.loadEmployee();
                 for (Employee p : Employee1) {
                     System.out.println(p);
                 }
                 break;
             case 2:
-               
+
                 Scanner firstname2 = new Scanner(System.in);
                 String fname22 = firstname2.nextLine();
                 Scanner lastname2 = new Scanner(System.in);
@@ -130,7 +124,7 @@ public class EmployeeMod{
                 Scanner password2 = new Scanner(System.in);
                 String pass22 = password2.nextLine();
                 //modEmployee(fname22, lname22, email22, user22, pass22);
-                ArrayList<Employee> Employee2 = loadEmployee();
+                ArrayList<Employee> Employee2 = DatabaseInterface.loadEmployee();
                 for (Employee p : Employee2) {
                     System.out.println(p);
                 }
@@ -140,21 +134,18 @@ public class EmployeeMod{
                 String id33 = id3.nextLine();
                 removeEmployee(id33);
                 ArrayList<Employee> Employee3 = DatabaseInterface.getEmployee();
-               
+
                 break;
             case 4:
                 Scanner id4 = new Scanner(System.in);
                 String id44 = id4.nextLine();
                 findEmployeeUser(id44);
-                default:
-        System.out.println("Woops");
+            default:
+                System.out.println("Woops");
                 break;
 
-                }
-         
-        
         }
 
     }
 
-
+}
