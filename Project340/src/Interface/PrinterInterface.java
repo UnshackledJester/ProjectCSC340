@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project340;
+package Interface;
 
 /**
  *
  * @author Chronos
  */
-public class Project340 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class PrinterInterface {
     
 }
