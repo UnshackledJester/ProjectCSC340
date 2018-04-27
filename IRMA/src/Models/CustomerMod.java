@@ -71,7 +71,7 @@ public class CustomerMod {
 
     public static void modCustomer(String firstName, String lastName, String email, String username, String password,String _UUID) throws IOException, Exception {
         Customer modCustomer = new Customer(firstName, lastName, email, username, password,_UUID);
-        String test = username;
+        String test = _UUID;
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         for (Customer customer : arr) {
             if (customer.getID().contains(test)) {

@@ -359,12 +359,10 @@ public class InformationView extends javax.swing.JFrame {
             case MANAGERMODE:
                 System.out.println("Worked manager modE");
                 if (loadedFields) {
-                    btnEnter.setText("Save");
                     {
                         try {
-                            if (hasInfo()) {
                                 EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
-                            }
+                            
                         } catch (Exception ex) {
 
                             lblError.setText("User ID already exists.");
@@ -404,7 +402,7 @@ public class InformationView extends javax.swing.JFrame {
                         if (hasInfo()) {
                             boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
                             if (!saved) {
-                                lblError.setText("User ID does not exist.");
+                                lblError.setText("User ID already exists.");
                                 lblError.setVisible(true);
                             
                         }}else{
@@ -419,11 +417,10 @@ public class InformationView extends javax.swing.JFrame {
 
             case MANAGERMODC:
                 System.out.println("Worked manager modC");
-            case EMPLOYEEMOD:{
+            case EMPLOYEEMOD:
                 System.out.println("Worked, employee mod");
                 System.out.println("Worked Admin mod");
                 if (loadedFields) {
-                    btnEnter.setText("Save");
                     try {
                             CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
@@ -437,7 +434,7 @@ public class InformationView extends javax.swing.JFrame {
 
                     customerSetfields();
 
-                }}
+                }
                 break;
 
             case MANAGERDELC:

@@ -69,7 +69,7 @@ public class EmployeeMod{
         System.out.println(test);
         System.out.println("proof");
         for (Employee employee : arr) {
-            if (employee.getUsername().equals(test)&& employee.isArchived()) {
+            if (employee.getUsername().equals(test)&& !employee.isArchived()) {
                 System.out.println("ARCHIVED BITCH");
                 return employee;
             }
@@ -80,7 +80,7 @@ public class EmployeeMod{
 
     public static void modEmployee(String firstName, String lastName, String email, String username, String password, String _UUID) throws IOException, Exception {
         Employee modEmployee = new Employee(firstName, lastName, email, username, password, _UUID);
-        String test = username;
+        String test = _UUID;
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         for (Employee employee : arr) {
             if (employee.getID().contains(test)) {
