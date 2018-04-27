@@ -52,8 +52,9 @@ public class InformationView extends javax.swing.JFrame {
             String user = txtUser.getText();
             Customer customer = CustomerMod.findCustomerUser(user);
             //Set fields.
+            String dehash = Utility.HashPassword.deHashed(customer.getPassword());
             txtUser.setText(customer.getUsername());
-            txtPass.setText(customer.getPassword());
+            txtPass.setText(dehash);
             txtEmail.setText(customer.getEmail());
             txtFirst.setText(customer.getFirstname());
             txtLast.setText(customer.getLastname());
@@ -79,8 +80,9 @@ public class InformationView extends javax.swing.JFrame {
             String _user = txtUser.getText();
             Manager manager = ManagerMod.findManagerUser(_user);
             //Set fields
+            String dehash = Utility.HashPassword.deHashed(manager.getPassword());
             txtUser.setText(manager.getUsername());
-            txtPass.setText(manager.getPassword());
+            txtPass.setText(dehash);
             txtEmail.setText(manager.getEmail());
             txtFirst.setText(manager.getFirstname());
             txtLast.setText(manager.getLastname());
@@ -108,8 +110,9 @@ public class InformationView extends javax.swing.JFrame {
             String _user = txtUser.getText();
             Employee employee = EmployeeMod.findEmployeeUser(_user);
             //Set fields.
+            String dehash = Utility.HashPassword.deHashed(employee.getPassword());
             txtUser.setText(employee.getUsername());
-            txtPass.setText(employee.getPassword());
+            txtPass.setText(dehash);
             txtEmail.setText(employee.getEmail());
             txtFirst.setText(employee.getFirstname());
             txtLast.setText(employee.getLastname());
