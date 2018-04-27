@@ -135,8 +135,7 @@ public class ManagerView extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         //Exit system when exit button is pressed.
-        LoginView logv = new LoginView();
-        logv.setVisible(true);
+        Controllers.LoginController.MakeLogin();
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 

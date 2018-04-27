@@ -17,7 +17,7 @@ public class Employee implements Serializable {
     private String firstname;
     private String lastname;
     private String email;
-    private String password;
+    String password;
     private String username;
     private boolean Archived;
 

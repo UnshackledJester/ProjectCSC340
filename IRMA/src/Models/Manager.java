@@ -4,6 +4,7 @@ package Models;
     Last updated 4/26/2018.
 */
 //Imports.
+import Utility.HashPassword;
 import java.io.Serializable;
 
 //Public class for manager accounts.
@@ -19,6 +20,12 @@ public class Manager extends Employee implements Serializable  {
     public Manager(String _firstName, String _lastName, String _email, String _username, String _password, String _UUID){
         super(_firstName,_lastName,_email,_username,_password,_UUID);
     }
+    
+    @Override
+        public String getPassword() {
+        return HashPassword.Hashed(password);
+    }
+
 
 
     //Override to string for testing purposes.

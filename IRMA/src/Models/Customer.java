@@ -6,6 +6,7 @@ package Models;
  */
 
 //Imports.
+import Utility.HashPassword;
 import Utility.UUIdentifier;
 import java.io.Serializable;
 
@@ -67,12 +68,12 @@ public class Customer implements Serializable {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
+   
     public void setPassword(String _password) {
         this.password = _password;
+    }
+    public String getPassword() {
+        return HashPassword.Hashed(password);
     }
 
     public String getEmail() {

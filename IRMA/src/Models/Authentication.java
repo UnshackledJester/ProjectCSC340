@@ -39,7 +39,7 @@ public class Authentication {
     public static boolean testForManager(String _pass, String _user) throws Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
-            if (manager.getUsername().equals(_user) && manager.getPassword().equals(_pass)) {
+            if (manager.getUsername().equals(_user) && HashPassword.deHashed(manager.getPassword()).equals(_pass)) {
                 if (!manager.getArchived()) {
                     return true;
                 }

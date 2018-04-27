@@ -99,8 +99,7 @@ public class EmployeeView extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         //Upon exit via exit button, dispose of current window and generate new login view. 
-        LoginView logv = new LoginView();
-        logv.setVisible(true);
+        Controllers.LoginController.MakeLogin();
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 

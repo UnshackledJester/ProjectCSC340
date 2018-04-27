@@ -101,8 +101,7 @@ public class AdminView extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // When logout button is selected, dispose current window and generate new login view.
-        LoginView logv = new LoginView();
-        logv.setVisible(true);
+        Controllers.LoginController.MakeLogin();
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
