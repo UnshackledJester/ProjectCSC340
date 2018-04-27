@@ -4,7 +4,6 @@ package Interfaces;
     Interface for server interaction.
     Last updated 4/26/2018.
  */
-
 //Import models, steam input/output, and arraylist.
 import Models.Admin;
 import Models.Customer;

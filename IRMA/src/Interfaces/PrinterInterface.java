@@ -10,5 +10,5 @@ package Interfaces;
  * @author Chronos
  */
 public class PrinterInterface {
-    
+
 }

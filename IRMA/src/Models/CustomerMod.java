@@ -4,8 +4,8 @@ package Models;
     Model for handeling customer account manipulations
     Last updated 4/26/2018
  */
-
 //Imports.
+
 import Interfaces.ServerInterface;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class CustomerMod {
         //Boolean to check for existing ID's and saving errors.
         boolean save = true;
         for (Customer customer : arr) {
-            if (customer.getUsername().contains(testUser)) {
+            if (customer.getUsername().contains(testUser) ) {
                 save = false;
             }
         }

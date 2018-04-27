@@ -1,4 +1,5 @@
 package Controllers;
+
 /*
     Controller for the employee view.
     Last updated 4/26/2018
@@ -8,7 +9,7 @@ import Views.EmployeeView;
 
 //Public class for controller.
 public class EmployeeController {
-    
+
 //Stubbed constructor.
     public EmployeeController() {
     }

@@ -1,10 +1,12 @@
 package Models;
+
 /*
     Model for employee accounts.
     Last updated 4/26/2018.
 
-*/
+ */
 
+import Utility.HashPassword;
 import java.io.Serializable;
 import Utility.UUIdentifier;
 
@@ -88,7 +90,7 @@ public class Employee implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return HashPassword.Hashed(password);
     }
 
     public void setPassword(String _password) {

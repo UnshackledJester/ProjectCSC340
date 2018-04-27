@@ -1,10 +1,12 @@
 package Models;
+
 /*
     Model for authentication of login combination
     Last updated 4/26/2018.
-*/
+ */
 
 //Imports for i/o handling and interfaces.
+import Utility.HashPassword;
 import Interfaces.DatabaseInterface;
 import Interfaces.LoginEnum;
 import Interfaces.ServerInterface;
@@ -32,14 +34,14 @@ public class Authentication {
             return LoginEnum.NOMATCH;
         }
     }
-    
+
 //Test if manager username and password combination exists.
-    public static boolean testForManager(String _pass, String _user) throws IOException, Exception {
+    public static boolean testForManager(String _pass, String _user) throws Exception {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
             if (manager.getUsername().equals(_user) && manager.getPassword().equals(_pass)) {
-                if(!manager.getArchived()){
-                return true;
+                if (!manager.getArchived()) {
+                    return true;
                 }
             }
         }
@@ -50,7 +52,7 @@ public class Authentication {
     public static boolean testForEmployee(String _pass, String _user) throws Exception {
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         for (Employee employee : arr) {
-            if (employee.getUsername().equals(_user) && employee.getPassword().equals(_pass)) {
+            if (employee.getUsername().equals(_user) && HashPassword.deHashed(employee.getPassword()).equals(_pass)) {
                 if (!employee.getArchived()) {
                     return true;
                 }
@@ -65,9 +67,9 @@ public class Authentication {
         ArrayList<Admin> arr = ServerInterface.getAdmin();
         for (Admin admin : arr) {
             if (admin.getUsername().equals(_user) && admin.getPassword().equals(_pass)) {
-                
-                    return true;
-                
+
+                return true;
+
             }
         }
 
@@ -80,8 +82,8 @@ public class Authentication {
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         for (Customer customer : arr) {
             if (customer.getUsername().equals(_user) && customer.getPassword().equals(_pass)) {
-                if(!customer.getArchived()){
-                return true;
+                if (!customer.getArchived()) {
+                    return true;
                 }
             }
         }
