@@ -71,7 +71,8 @@ public class InformationView extends javax.swing.JFrame {
             lblUUID.setText(customer.getID());
             btnEnter.setText("Save");
             loadedFields = true;
-
+            lblError.setVisible(false);
+            
         } catch (Exception ex) {
             lblError.setVisible(true);
             lblError.setText("No such user ID exists:");
@@ -94,6 +95,7 @@ public class InformationView extends javax.swing.JFrame {
             txtLast.setText(manager.getLastname());
             lblUUID.setText(manager.getID());
             loadedFields = true;
+            lblError.setVisible(false);
             btnEnter.setText("Save");
 
         } catch (Exception ex) {
@@ -117,6 +119,7 @@ public class InformationView extends javax.swing.JFrame {
             loadedFields = true;
             lblUUID.setText(employee.getID());
             btnEnter.setText("Save");
+            lblError.setVisible(false);
 
         } catch (Exception ex) {
             lblError.setVisible(true);
