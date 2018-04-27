@@ -27,7 +27,7 @@ public class EmployeeMod {
         //Boolean to test if able to save.
         boolean save = true;
         for (Employee employee : arr) {
-            if (!employee.getUsername().contains(testUser)|| !(Res.hasLength(testUser)) || !(Res.hasUpperCase(testUser)) || !(Res.hasLowerCase(testUser)) || !(Res.hasSymbol(testUser))) {
+            if (!employee.getUsername().contains(testUser)|| !(Res.hasLength(testUser)) || !(Res.hasUpperCase(testUser)) || !(Res.hasLowerCase(testUser))) {
                 save = false;
             }
         }
