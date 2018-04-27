@@ -7,7 +7,7 @@ package Models;
  */
 //Imports.
 import Interfaces.DatabaseInterface;
-import Utility.Res;
+import Utility.Restriction;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +27,7 @@ public class ManagerMod {
         //Boolean used for testing if ID already exists.
         boolean save = true;
         for (Manager manager : arr) {
-            if (manager.getUsername().contains(testUser)|| !(Res.hasLength(testUser)) || !(Res.hasUpperCase(testUser)) || !(Res.hasLowerCase(testUser))) {
+            if (manager.getUsername().contains(testUser)|| !(Restriction.hasLength(testUser)) || !(Restriction.hasUpperCase(testUser)) || !(Restriction.hasLowerCase(testUser))) {
                 save = false;
 
             }

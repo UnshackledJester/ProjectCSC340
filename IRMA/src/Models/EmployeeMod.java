@@ -6,7 +6,7 @@ package Models;
  */
 //Imports.
 import Interfaces.DatabaseInterface;
-import Utility.Res;
+import Utility.Restriction;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +27,7 @@ public class EmployeeMod {
         //Boolean to test if able to save.
         boolean save = true;
         for (Employee employee : arr) {
-            if (employee.getUsername().contains(testUser)|| !(Res.hasLength(testUser)) || !(Res.hasUpperCase(testUser)) || !(Res.hasLowerCase(testUser))) {
+            if (employee.getUsername().contains(testUser)|| !(Restriction.hasLength(testUser)) || !(Restriction.hasUpperCase(testUser)) || !(Restriction.hasLowerCase(testUser))) {
                 save = false;
             }
         }

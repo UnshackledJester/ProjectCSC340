@@ -1,39 +1,27 @@
 package Utility;
 
 public class Restriction {
-
-    public static boolean validPassword(String password) {
-        //verify password by uppercase,lowercase and number
-        //The restriction of password: Must have at least one uppercase one lowercase and a number
-        //Password has at least 8 char
-        String upperCaseChars = "(.*[A-Z].*)";
-        String lowerCaseChars = "(.*[a-z].*)";
-        String number = "(.*[0-9].*)";
-        if (password.length() < 8) {
-            return false;
-        }
-
-        if (!password.matches(upperCaseChars)) {
-            return false;
-        }
-        if (!password.matches(lowerCaseChars)) {
-            return false;
-        }
-        if (!password.matches(number)) {
-            return false;
-        }
+public static boolean hasLength(CharSequence data) {
+    if (String.valueOf(data).length() >= 8) 
         return true;
-    }
+    else return false;
+}
 
-    public static boolean validUsername(String username) {
+public static boolean hasSymbol(CharSequence data) {
+    String password = String.valueOf(data);
+    boolean hasSpecial = !password.matches("[A-Za-z0-9 ]*");
+    return hasSpecial;
+}
 
-        //The valid usename can not used by punctuations 
-        for (int i = 0; i < username.length(); ++i) {
-            if (username.charAt(i) == '\'' || username.charAt(i) == '"' || username.charAt(i) == '@' || username.charAt(i) == '$' || username.charAt(i) == '%') {
-                return false;
-            }
-        }
-        return true;
-    }
+public static boolean hasUpperCase(CharSequence data) {
+    String password = String.valueOf(data);
+    boolean hasUppercase = !password.equals(password.toLowerCase());
+    return hasUppercase;
+}
 
+public static boolean hasLowerCase(CharSequence data) {
+    String password = String.valueOf(data);
+    boolean hasLowercase = !password.equals(password.toUpperCase());
+    return hasLowercase;
+}
 }

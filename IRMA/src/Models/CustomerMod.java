@@ -7,7 +7,7 @@ package Models;
 //Imports.
 
 import Interfaces.ServerInterface;
-import Utility.Res;
+import Utility.Restriction;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +28,7 @@ public class CustomerMod {
         //Boolean to check for existing ID's and saving errors.
         boolean save = true;
         for (Customer customer : arr) {
-            if (customer.getUsername().contains(testUser)|| !(Res.hasLength(testUser)) || !(Res.hasUpperCase(testUser)) || !(Res.hasLowerCase(testUser))) {
+            if (customer.getUsername().contains(testUser)|| !(Restriction.hasLength(testUser)) || !(Restriction.hasUpperCase(testUser)) || !(Restriction.hasLowerCase(testUser))) {
                 save = false;
             }
         }
