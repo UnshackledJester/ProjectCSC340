@@ -20,6 +20,7 @@ public class ManagerView extends javax.swing.JFrame {
      */
     public ManagerView() {
         initComponents();
+        lblError.setVisible(false);
     }
 
     /**

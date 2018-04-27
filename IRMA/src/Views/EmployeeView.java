@@ -19,6 +19,8 @@ public class EmployeeView extends javax.swing.JFrame {
      */
     public EmployeeView() {
         initComponents();
+            lblError.setVisible(false);
+            
     }
 
     /**

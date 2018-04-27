@@ -20,6 +20,7 @@ public class AdminView extends javax.swing.JFrame {
      */
     public AdminView() {
         initComponents();
+        lblError.setVisible(false);
     }
     
     

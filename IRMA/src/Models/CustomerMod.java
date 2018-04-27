@@ -20,7 +20,7 @@ public class CustomerMod {
     private CustomerMod() {
     }
 
-    public static void addCustomer(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addCustomer(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current Customers, and add one more index
         ArrayList<Customer> arr = ServerInterface.getCustomer();
         String test = username;
@@ -40,6 +40,7 @@ public class CustomerMod {
             ServerInterface.saveCustomer(arr);
             System.out.println("WOULD HAVE SAVED");
         }
+        return save;
     }
 
     public static Customer removeCustomer(String username) throws IOException, Exception {

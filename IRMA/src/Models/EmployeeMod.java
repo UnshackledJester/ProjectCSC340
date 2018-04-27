@@ -23,7 +23,7 @@ public class EmployeeMod{
     private EmployeeMod() {
     }
 
-    public static void addEmployee( String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addEmployee( String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current Employees, and add one more index
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         String test = username;
@@ -43,6 +43,7 @@ public class EmployeeMod{
             DatabaseInterface.saveEmployee(arr);
             System.out.println("WOULD HAVE SAVED");
         }
+        return save;
     }
 
     public static Employee removeEmployee(String username) throws IOException, Exception {

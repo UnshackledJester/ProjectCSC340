@@ -23,7 +23,7 @@ public class ManagerMod {
     private ManagerMod() {
     }
 
-    public static void addManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
+    public static boolean addManager(String firstName, String lastName, String email, String username, String password) throws IOException, Exception {
         //Get array of current managers, and add one more index
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         String test = username;
@@ -33,6 +33,7 @@ public class ManagerMod {
             if (manager.getUsername().contains(test)) {
                 System.out.println(" ID already exist");
                 save = false;
+                
             }
             //  arr.add(new Manager(id, firstName, lastName, email, username, password));
 //DatabaseInterface.saveManager(arr);
@@ -45,7 +46,7 @@ public class ManagerMod {
 
             DatabaseInterface.saveManager(arr);
             System.out.println("WOULD HAVE SAVED");
-        }
+        }return save;
     }
 
     public static Manager removeManager(String username) throws IOException, Exception {
