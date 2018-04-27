@@ -54,10 +54,4 @@ public class HashPassword {
         return str1;
 
     }
-
-    public static void main(String[] args) {
-        String Str1 = "Password";
-        System.out.println(Hashed(Str1));
-        System.out.println(deHashed(Hashed(Str1)));
-    }
 }
