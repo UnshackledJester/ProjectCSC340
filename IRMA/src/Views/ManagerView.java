@@ -3,7 +3,7 @@ package Views;
 /*
     View for manager.
     Last updated 4/26/2018.
-*/
+ */
 //Imports.
 import Controllers.IRMAmainController;
 import Interfaces.InformationSelection;

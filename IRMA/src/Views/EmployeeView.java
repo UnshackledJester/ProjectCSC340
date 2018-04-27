@@ -4,7 +4,6 @@ package Views;
     View for employee accounts.
     Last updated 4/26/2018.
  */
-
 //Imports.
 import Controllers.IRMAmainController;
 import Interfaces.InformationSelection;

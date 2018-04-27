@@ -4,7 +4,6 @@ package Utility;
     Resets base documents to default for debug.
 */
 
-
 import static Interfaces.DatabaseInterface.loadEmployee;
 import static Interfaces.DatabaseInterface.loadManager;
 import static Interfaces.DatabaseInterface.saveEmployee;
