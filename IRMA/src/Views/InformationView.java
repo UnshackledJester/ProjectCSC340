@@ -1,10 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
+/*
+    View for information input and output to user.
+    Last updated 4/26/2018.
+ */
+//Imports.
 import Controllers.IRMAmainController;
 import Interfaces.InformationSelection;
 import Models.Customer;
@@ -16,33 +16,22 @@ import Models.ManagerMod;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Chronos
- */
-/*
-        txtUser.getText();
-        txtPass.getText();
-        txtEmail.getText();
-        txtFirst.getText();
-        txtLast.getText();
- */
+//Public class for information view.
 public class InformationView extends javax.swing.JFrame {
 
-    public static boolean loadedFields = false;
+    //Public boolen to track text field input.
+    private static boolean loadedFields = false;
 
-    /**
-     * Creates new form InformationView
-     *
-     * @param choice
-     */
+    //Generate new InformationView.
     public InformationView() {
         initComponents();
+        //Set UUID label and Error label visible to false.
         lblUUID.setVisible(false);
         lblError.setVisible(false);
     }
 
-    public void clearFields() {
+    //Method to clear text fields.
+    private void clearFields() {
         txtUser.setText(null);
         txtPass.setText(null);
         txtEmail.setText(null);
@@ -50,89 +39,96 @@ public class InformationView extends javax.swing.JFrame {
         txtLast.setText(null);
     }
 
-    public boolean hasInfo() {
-        if (!txtFirst.getText().isEmpty() && !txtLast.getText().isEmpty() && !txtEmail.getText().isEmpty() && !txtUser.getText().isEmpty() && !txtPass.getText().isEmpty()) {
-            return true;
-
-        }
-        return false;
+    //Method to test if fields are populated or empty.
+    private boolean hasInfo() {
+        return !txtFirst.getText().isEmpty() && !txtLast.getText().isEmpty() && !txtEmail.getText().isEmpty() && !txtUser.getText().isEmpty() && !txtPass.getText().isEmpty();
     }
 
-    public void customerSetfields() {
+    //Method to set fields for a customer account.
+    private void customerSetfields() {
         try {
+            //Try catch: Send string from text field to customer account lookup
+            //Populate fiellds with results
             String user = txtUser.getText();
             Customer customer = CustomerMod.findCustomerUser(user);
-
+            //Set fields.
             txtUser.setText(customer.getUsername());
             txtPass.setText(customer.getPassword());
             txtEmail.setText(customer.getEmail());
             txtFirst.setText(customer.getFirstname());
             txtLast.setText(customer.getLastname());
             lblUUID.setText(customer.getID());
-            btnEnter.setText("Save");
+            //Set boolean to true, indicating fields are populated.
             loadedFields = true;
+            //Hide Error label.
             lblError.setVisible(false);
-            
+
         } catch (Exception ex) {
+            //Catch error: Make Error label visible.
             lblError.setVisible(true);
-            lblError.setText("No such user ID exists:");
             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void managerSetFields() {
+    //Method to set fields for a manager account.
+    private void managerSetFields() {
         try {
-
-            System.out.println("Inside setfields");
+            //Try catch: Send string from text field to customer account lookup
+            //Populate fiellds with results
             String user = txtUser.getText();
             Manager manager = ManagerMod.findManagerUser(user);
-            System.out.println("Alpha");
-            System.out.println(manager.getUsername());
+            //Set fields
             txtUser.setText(manager.getUsername());
             txtPass.setText(manager.getPassword());
             txtEmail.setText(manager.getEmail());
             txtFirst.setText(manager.getFirstname());
             txtLast.setText(manager.getLastname());
             lblUUID.setText(manager.getID());
+            //Set boolean to true, indicating fields are populated.
             loadedFields = true;
+            //Hide Error label.
             lblError.setVisible(false);
+            //Change enter button text to "Save" to prevent confusion.
             btnEnter.setText("Save");
 
         } catch (Exception ex) {
+            //Catch error: Make Error label visible.
             lblError.setVisible(true);
             lblError.setText("No such user ID exists:");
             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void employeeSetFields() {
+    //Public method to 
+    private void employeeSetFields() {
         try {
+            //Try catch: Send string from text field to employee account lookup
+            //Populate fiellds with results
             String user = txtUser.getText();
-
             Employee employee = EmployeeMod.findEmployeeUser(user);
-
+            //Set fields.
             txtUser.setText(employee.getUsername());
             txtPass.setText(employee.getPassword());
             txtEmail.setText(employee.getEmail());
             txtFirst.setText(employee.getFirstname());
             txtLast.setText(employee.getLastname());
+            //Set boolean to true, indicating fields are populated.
             loadedFields = true;
             lblUUID.setText(employee.getID());
+            //Change enter button text to "Save" to prevent confusion.
             btnEnter.setText("Save");
+            //Hide Error label.
             lblError.setVisible(false);
 
         } catch (Exception ex) {
+            //Catch error: Make Error label visible.
             lblError.setVisible(true);
             lblError.setText("No such user ID exists:");
             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    //Generated code.
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -266,7 +262,7 @@ public class InformationView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        //Whene exiting, reset boolean for window control to false, and dispose of current view.
         IRMAmainController.setWindowStatus(false);
         loadedFields = false;
         this.dispose();
@@ -282,13 +278,14 @@ public class InformationView extends javax.swing.JFrame {
                 System.out.println("Worked Admin add");
                  {
                     try {
-                        if(hasInfo()){
-                        boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                        if (!saved) {
+                        if (hasInfo()) {
+                            boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            if (!saved) {
 
-                            lblError.setText("User ID already exists.");
-                            lblError.setVisible(true);
-                        }}else{
+                                lblError.setText("User ID already exists.");
+                                lblError.setVisible(true);
+                            }
+                        } else {
                             lblError.setText("User information missing:");
                             lblError.setVisible(true);
                         }
@@ -302,7 +299,7 @@ public class InformationView extends javax.swing.JFrame {
             case ADMINMOD:
                 System.out.println("Worked Admin mod");
                 if (loadedFields) {
-                    
+
                     {
                         try {
                             System.out.println("inside save loop");
@@ -336,16 +333,18 @@ public class InformationView extends javax.swing.JFrame {
                     managerSetFields();
                 }
                 break;
-                
+
             case MANAGERADDE:
                 System.out.println("Worked managerAddE");
                  {
-                    try {if(hasInfo()){
-                        boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                        if (!saved) {
-                            lblError.setText("User ID already exists.");
-                            lblError.setVisible(true);
-                        }}else{
+                    try {
+                        if (hasInfo()) {
+                            boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                            if (!saved) {
+                                lblError.setText("User ID already exists.");
+                                lblError.setVisible(true);
+                            }
+                        } else {
                             lblError.setText("User information missing:");
                             lblError.setVisible(true);
                         }
@@ -361,8 +360,8 @@ public class InformationView extends javax.swing.JFrame {
                 if (loadedFields) {
                     {
                         try {
-                                EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
-                            
+                            EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
+
                         } catch (Exception ex) {
 
                             lblError.setText("User ID already exists.");
@@ -404,8 +403,9 @@ public class InformationView extends javax.swing.JFrame {
                             if (!saved) {
                                 lblError.setText("User ID already exists.");
                                 lblError.setVisible(true);
-                            
-                        }}else{
+
+                            }
+                        } else {
                             lblError.setText("User information missing:");
                             lblError.setVisible(true);
                         }
@@ -422,14 +422,14 @@ public class InformationView extends javax.swing.JFrame {
                 System.out.println("Worked Admin mod");
                 if (loadedFields) {
                     try {
-                            CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
-                        } catch (Exception ex) {
+                        CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
+                    } catch (Exception ex) {
 
-                            lblError.setText("User ID already exists.");
-                            lblError.setVisible(true);
-                            Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    
+                        lblError.setText("User ID already exists.");
+                        lblError.setVisible(true);
+                        Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                 } else {
 
                     customerSetfields();
@@ -464,42 +464,17 @@ public class InformationView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
+        //Clear text fields, reset fields loaded boolean, and hide Error label. 
         clearFields();
         loadedFields = false;
-        lblError.setVisible(loadedFields);
+        lblError.setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    //Generated code.
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InformationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InformationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InformationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InformationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //Make new view visible.
                 new InformationView().setVisible(true);
             }
 

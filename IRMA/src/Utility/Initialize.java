@@ -1,4 +1,9 @@
 package Utility;
+/*
+    Utility class for testing purposes.
+    Resets base documents to default for debug.
+*/
+
 
 import static Interfaces.DatabaseInterface.loadEmployee;
 import static Interfaces.DatabaseInterface.loadManager;

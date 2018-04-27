@@ -38,7 +38,7 @@ public class Authentication {
         ArrayList<Manager> arr = DatabaseInterface.getManager();
         for (Manager manager : arr) {
             if (manager.getUsername().equals(user) && manager.getPassword().equals(pass)) {
-                if(!manager.isArchived()){
+                if(!manager.getArchived()){
                 return true;
                 }
             }
@@ -51,7 +51,7 @@ public class Authentication {
         ArrayList<Employee> arr = DatabaseInterface.getEmployee();
         for (Employee employee : arr) {
             if (employee.getUsername().equals(user) && employee.getPassword().equals(pass)) {
-                if (!employee.isArchived()) {
+                if (!employee.getArchived()) {
                     return true;
                 }
             }
