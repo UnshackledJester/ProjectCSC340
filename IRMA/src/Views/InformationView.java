@@ -277,12 +277,17 @@ public class InformationView extends javax.swing.JFrame {
                 System.out.println("Worked Admin add");
                  {
                     try {
-                        if (hasInfo()) {
-                            boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
-                            if (!saved) {
-                                lblError.setText("User ID already exists.");
-                            }
+                        if(hasInfo()){
+                        boolean saved = ManagerMod.addManager(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
+                        if (!saved) {
+
+                            lblError.setText("User ID already exists.");
+                            lblError.setVisible(true);
+                        }}else{
+                            lblError.setText("User information missing:");
+                            lblError.setVisible(true);
                         }
+
                     } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -298,6 +303,8 @@ public class InformationView extends javax.swing.JFrame {
                             ManagerMod.modManager(txtFirst.getText(), txtLast.getText(),
                                     txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
+                            lblError.setText("User ID already exists.");
+                            lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -314,6 +321,8 @@ public class InformationView extends javax.swing.JFrame {
                         try {
                             ManagerMod.removeManager(txtUser.getText());
                         } catch (Exception ex) {
+                            lblError.setText("No such user.");
+                            lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -321,14 +330,18 @@ public class InformationView extends javax.swing.JFrame {
                     managerSetFields();
                 }
                 break;
-
+                
             case MANAGERADDE:
                 System.out.println("Worked managerAddE");
                  {
-                    try {
+                    try {if(hasInfo()){
                         boolean saved = EmployeeMod.addEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
                         if (!saved) {
                             lblError.setText("User ID already exists.");
+                            lblError.setVisible(true);
+                        }}else{
+                            lblError.setText("User information missing:");
+                            lblError.setVisible(true);
                         }
 
                     } catch (Exception ex) {
@@ -346,6 +359,9 @@ public class InformationView extends javax.swing.JFrame {
                                 EmployeeMod.modEmployee(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                             }
                         } catch (Exception ex) {
+
+                            lblError.setText("User ID already exists.");
+                            lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -362,6 +378,8 @@ public class InformationView extends javax.swing.JFrame {
                         try {
                             EmployeeMod.removeEmployee(txtUser.getText());
                         } catch (Exception ex) {
+                            lblError.setText("User ID does not exist.");
+                            lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -379,8 +397,12 @@ public class InformationView extends javax.swing.JFrame {
                         if (hasInfo()) {
                             boolean saved = CustomerMod.addCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText());
                             if (!saved) {
-                                lblError.setText("User ID already exists.");
-                            }
+                                lblError.setText("User ID does not exist.");
+                                lblError.setVisible(true);
+                            
+                        }}else{
+                            lblError.setText("User information missing:");
+                            lblError.setVisible(true);
                         }
                     } catch (Exception ex) {
                         Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
@@ -397,6 +419,9 @@ public class InformationView extends javax.swing.JFrame {
                         try {
                             CustomerMod.modCustomer(txtFirst.getText(), txtLast.getText(), txtEmail.getText(), txtUser.getText(), txtPass.getText(), lblUUID.getText());
                         } catch (Exception ex) {
+
+                            lblError.setText("User ID already exists.");
+                            lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -416,6 +441,8 @@ public class InformationView extends javax.swing.JFrame {
                         try {
                             CustomerMod.removeCustomer(txtUser.getText());
                         } catch (Exception ex) {
+                            lblError.setText("User ID does not exist.");
+                            lblError.setVisible(true);
                             Logger.getLogger(InformationView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
